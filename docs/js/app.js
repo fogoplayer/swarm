@@ -23,9 +23,7 @@ else {
 if (document.cookie === "") {
     document.cookie = {};
 }
-else {
-    var cookie = JSON.parse(document.cookie);
-}
+var cookie = JSON.parse(document.cookie);
 
 /*
 Update onscreen instructions using data from the server
