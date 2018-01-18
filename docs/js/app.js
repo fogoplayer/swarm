@@ -34,7 +34,7 @@ Update onscreen instructions using data from the server
 */
 function updateInstruction(text, icon) {
     document.getElementById("instructionText").innerHTML = text;
-    document.getElementById("instructionIcon").innerHTML = icon;
+    document.getElementById("instructionIcon").setAttribute("src", "img/"+icon+".png");
 }
 
 /*
