@@ -2,22 +2,23 @@ var cacheName = 'weatherPWA-step-6-0';
 var dataCacheName = "weatherData-v1"
 var filesToCache = [
     '/',
-    '../work/index.html',
-    '../work/scripts/app.js',
-    '../work/styles/inline.css',
-    '../work/images/clear.png',
-    '../work/images/cloudy-scattered-showers.png',
-    '../work/images/cloudy.png',
-    '../work/images/fog.png',
-    '../work/images/ic_add_white_24px.svg',
-    '../work/images/ic_refresh_white_24px.svg',
-    '../work/images/partly-cloudy.png',
-    '../work/images/rain.png',
-    '../work/images/scattered-showers.png',
-    '../work/images/sleet.png',
-    '../work/images/snow.png',
-    '../work/images/thunderstorm.png',
-    '../work/images/wind.png'
+    '/index.html',
+    '/',
+    '/js/app.js',
+    '/js/materialize.min.js',
+    '/js/app.js',
+    '/styles/materialize.min.css',
+    '/img/back_left.png',
+    '/img/back_right.png',
+    '/img/forward.png',
+    '/img/left.png',
+    '/img/right.png',
+    '/img/stop.png',
+    '/fonts/roboto/Roboto-Bold.woff',
+    '/fonts/roboto/Roboto-Light.woff',
+    '/fonts/roboto/Roboto-Medium.woff',
+    '/fonts/roboto/Roboto-Regular.woff',
+    '/fonts/roboto/Roboto-Thin.woff'
 ];
 
 self.addEventListener('install', function(e) {
