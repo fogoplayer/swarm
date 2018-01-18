@@ -1,24 +1,22 @@
 var cacheName = 'weatherPWA-step-6-0';
 var dataCacheName = "weatherData-v1"
 var filesToCache = [
-    '/',
-    '/index.html',
-    '/',
-    '/js/app.js',
-    '/js/materialize.min.js',
-    '/js/app.js',
-    '/styles/materialize.min.css',
-    '/img/back_left.png',
-    '/img/back_right.png',
-    '/img/forward.png',
-    '/img/left.png',
-    '/img/right.png',
-    '/img/stop.png',
-    '/fonts/roboto/Roboto-Bold.woff',
-    '/fonts/roboto/Roboto-Light.woff',
-    '/fonts/roboto/Roboto-Medium.woff',
-    '/fonts/roboto/Roboto-Regular.woff',
-    '/fonts/roboto/Roboto-Thin.woff'
+    'index.html',
+    'js/app.js',
+    'js/materialize.min.js',
+    'js/app.js',
+    'styles/materialize.min.css',
+    'img/back_left.png',
+    'img/back_right.png',
+    'img/forward.png',
+    'img/left.png',
+    'img/right.png',
+    'img/stop.png',
+    'fonts/roboto/Roboto-Bold.woff',
+    'fonts/roboto/Roboto-Light.woff',
+    'fonts/roboto/Roboto-Medium.woff',
+    'fonts/roboto/Roboto-Regular.woff',
+    'fonts/roboto/Roboto-Thin.woff'
 ];
 
 self.addEventListener('install', function(e) {
