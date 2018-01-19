@@ -13,17 +13,24 @@ if ('serviceWorker' in navigator) {
 if ("geolocation" in navigator) {
     navigator.geolocation.watchPosition(function(position) {
         updateLocation(position.coords.latitude, position.coords.longitude);
-    });
+    },function(){},geo_options);
 }
 else {
     alert("Please update your browser to one that supports geolocation, such as Google Chrome or Mozilla Firefox.")
 }
+
+var geo_options = {
+  enableHighAccuracy: true,
+  maximumAge        : 500,
+  timeout           : 27000
+};
 
 //Make document.cookie readable as an object
 if (document.cookie === "") {
     document.cookie = {};
 }
 var cookie = JSON.parse(document.cookie);
+
 
 /*
 Update onscreen instructions using data from the server
@@ -32,7 +39,7 @@ Update onscreen instructions using data from the server
 */
 function updateInstruction(text, icon) {
     document.getElementById("instructionText").innerHTML = text;
-    document.getElementById("instructionIcon").setAttribute("src", "img/"+icon+".png");
+    document.getElementById("instructionIcon").setAttribute("src", "img/" + icon + ".png");
 }
 
 /*
