@@ -18,11 +18,9 @@ if ("geolocation" in navigator) {
 else {
     alert("Please update your browser to one that supports geolocation, such as Google Chrome or Mozilla Firefox.")
 }
-
 var geo_options = {
   enableHighAccuracy: true,
-  maximumAge        : 500,
-  timeout           : 27000
+  maximumAge        : 10,
 };
 
 //Make document.cookie readable as an object
@@ -31,7 +29,7 @@ if (document.cookie === "") {
 }
 var cookie = JSON.parse(document.cookie);
 
-
+/*---------------------------------------Functions---------------------------------------*/
 /*
 Update onscreen instructions using data from the server
 @param text - the String to be displayed at the top of the UI
