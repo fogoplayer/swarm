@@ -19,7 +19,7 @@ else {
     alert("Please update your browser to one that supports geolocation, such as Google Chrome or Mozilla Firefox.")
 }
 var geo_options = {
-  enableHighAccuracy: true,
+  enableHighAccuracy: false,
   maximumAge        : 10,
 };
 
