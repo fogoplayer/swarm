@@ -46,23 +46,13 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
-    //console.log('[ServiceWorker] Fetch', e.request.url);
-    var dataUrl = "https://query.yahoapis.com/v1/ubic/yql";
-    if (e.request.url.indexOf(dataUrl) > -1) {
-        e.respondWith(
-            caches.open(dataCacheName).then(function(cache) {
-                return fetch(e.request).then(function(response) {
-                    cache.put(e.request.url, e.response.clone());
-                    return response;
-                });
-            })
-        );
-    }
-    else {
-        e.respondWith(
-            caches.match(e.request).then(function(response) {
-                return response || fetch(e.request);
-            })
-        );
-    }
+    console.log('[ServiceWorker] Fetch', e.request.url);
+    e.respondWith(
+        caches.open(dataCacheName).then(function(cache) {
+            return fetch(e.request).then(function(response) {
+                cache.put(e.request.url, e.response.clone());
+                return response;
+            });
+        })
+    );
 });

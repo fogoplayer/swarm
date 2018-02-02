@@ -28,15 +28,14 @@
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <nav>
         <div class="nav-wrapper #e040fb purple accent-2">
-            <ul id="nav-mobile" class="center">
-                <li> <a href="#" class="brand-logo center">SWARM</a> </li>
+            <ul id="nav-mobile" class="left">
+                <li> <a href="#" class="brand-logo left">SWARM</a> </li>
             </ul>
             <ul id="nav-mobile" class="right">
                 <li>
                     <a id="locationOutput"></a>
                 </li>
                 <li> <a href="settings.html"><i class="material-icons">settings</i></a> </li>
-                <li> <a href="overview.html"><i class="material-icons">description</i></a></li>
             </ul>
         </div>
     </nav>
