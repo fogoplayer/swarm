@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="styles/materialize.min.css" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SWARM</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="manifest" href="manifest.json">
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Weather PWA">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+    <!--Tile Icon for Windows-->
+    <meta name="msapplication-TileImage" content="img/forward.png">
+    <meta name="msapplication-TileColor" content="#e040fb"> </head>
+
+<body>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <nav>
+        <div class="nav-wrapper #e040fb purple accent-2">
+            <ul id="nav-mobile" class="center">
+                <li> <a href="#" class="brand-logo center">SWARM</a> </li>
+            </ul>
+            <ul id="nav-mobile" class="right">
+                <li>
+                    <a id="locationOutput"></a>
+                </li>
+                <li> <a href="settings.html"><i class="material-icons">settings</i></a> </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h4 class="card-title" id="instructionText">Instruction Text</h4>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <img id="instructionIcon" src="" alt="">
+                    <center id="spinner">
+                        <div class="preloader-wrapper big middle active">
+                            <div class="spinner-layer spinner-blue-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <center><a class="waves-effect waves-teal btn-flat"><i class="material-icons">add_location</i></a></center>
+            </div>
+            <div class="col s6">
+                <center><a class="btn-floating btn-large waves-effect waves-#e040fb purple accent-2"><i class="material-icons">volume_up</i></a></center>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

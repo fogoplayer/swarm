@@ -1,7 +1,9 @@
-var cacheName = 'weatherPWA-step-6-0';
-var dataCacheName = "weatherData-v1"
+var cacheName = 'swarm';
+var dataCacheName = "swarm-v1"
 var filesToCache = [
     'index.html',
+    'settings.html',
+    'main.html',
     'manifest.json',
     'js/app.js',
     'js/materialize.min.js',
@@ -46,13 +48,10 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
-    console.log('[ServiceWorker] Fetch', e.request.url);
+    //console.log('[ServiceWorker] Fetch', e.request.url);
     e.respondWith(
-        caches.open(dataCacheName).then(function(cache) {
-            return fetch(e.request).then(function(response) {
-                cache.put(e.request.url, e.response.clone());
-                return response;
-            });
+        caches.match(e.request).then(function(response) {
+            return response || fetch(e.request);
         })
     );
 });
