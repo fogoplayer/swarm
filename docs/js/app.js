@@ -88,10 +88,7 @@ Update onscreen display of the user's current location
 function updateLocation(lat, long) {
     document.getElementById("locationOutput").innerHTML = JSON.stringify(lat) + ", " + JSON.stringify(long);
     console.log(JSON.stringify(lat) + ", " + JSON.stringify(long));
-    //TODO Finish AJAX
-    $.getJSON('https://cap-swarm.herokuapp.com', function(data) {
-        console.log(data);
-    });
+    
 }
 
 /*
