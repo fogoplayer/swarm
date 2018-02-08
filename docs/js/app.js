@@ -35,7 +35,7 @@ var cookie = JSON.parse(document.cookie);
 document.addEventListener("DOMContentLoaded", function() {
     if (document.title == "Overview" && !(cookie.orientation && cookie.color && cookie.type)) {
         history.pushState({}, document.title, document.location.pathname.substring(1));
-        document.location.pathname = "/settings.html";
+        document.location = "settings.html";
     }
 
     if (document.title == "Overview") {
