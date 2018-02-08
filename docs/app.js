@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
             carType: cookie.type,
             carOrientation: cookie.orientation
         }, function(data) {
+            console.log(data);
             updateSetting(null, "id", data.id);
             //Fake data
             //data.instructions = ["Back up and go left", "Go forward"];
@@ -89,9 +90,15 @@ function updateLocation(lat, long) {
     document.getElementById("locationOutput").innerHTML = JSON.stringify(lat) + ", " + JSON.stringify(long);
     console.log(JSON.stringify(lat) + ", " + JSON.stringify(long));
     //TODO Finish AJAX
-    /*$.getJSON('https://cap-swarm.herokuapp.com', function(data) {
-        console.log(data);
-    });*/
+    $.getJSON('https://cap-swarm.herokuapp.com', {
+            id: cookie.id,
+            lat: lat,
+            long: long
+        },
+        function(data) {
+            console.log(data);
+            updateInstruction(data.text, data.icon);
+        });
 }
 
 /*
