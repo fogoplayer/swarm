@@ -1,5 +1,5 @@
 var cacheName = 'swarm';
-var dataCacheName = "swarm-v1"
+var dataCacheName = "swarm-v2"
 var filesToCache = [
     'index.html',
     'settings.html',
