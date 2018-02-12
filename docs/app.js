@@ -22,7 +22,7 @@ else {
 }
 var geo_options = {
     enableHighAccuracy: false,
-    maximumAge: 10,
+    maximumAge: 1000,
 };
 
 //Make document.cookie readable as an object
