@@ -22,6 +22,7 @@ else {
 }
 var geo_options = {
     enableHighAccuracy: false,
+    timeout: 1000,
     maximumAge: 1000,
 };
 
