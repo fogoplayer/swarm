@@ -1,5 +1,6 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+
 <head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,7 +20,8 @@
     <!--Tile Icon for Windows-->
     <meta name="msapplication-TileImage" content="img/forward.png">
     <meta name="msapplication-TileColor" content="#e040fb"> </head>
-
+    <!--Import ResponsiveVoice-->
+    <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
 <body>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -63,7 +65,7 @@
             </div>
         </div>
         <div class="col s6">
-            <center><a class="btn-floating btn-large waves-effect waves-#e040fb purple accent-2"><i class="material-icons">volume_up</i></a></center>
+            <center><a id="voiceToggle" class="btn-floating btn-large waves-effect waves-#e040fb purple accent-2" onclick="toggleSpokenFeedback()"><i class="material-icons">volume_up</i></a></center>
         </div>
 
     </div>
