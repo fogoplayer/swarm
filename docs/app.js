@@ -13,7 +13,7 @@ if ('serviceWorker' in navigator) {
 
 //Set up location
 if ("geolocation" in navigator) {
-    navigator.geolocation.watchPosition(function(position) {
+    var geolocator = navigator.geolocation.watchPosition(function(position) {
         updateLocation(position.coords.latitude, position.coords.longitude);
     }, function() {}, geo_options);
 }
