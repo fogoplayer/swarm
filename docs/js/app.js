@@ -27,7 +27,7 @@ var geo_options = {
 
 //Make document.cookie readable as an object
 if (document.cookie === "") {
-    document.cookie = JSON.stringify({spokenFeedbackOn:true});
+    document.cookie = JSON.stringify({spokenFeedBackOn:true});
 }
 var cookie = JSON.parse(document.cookie);
 
