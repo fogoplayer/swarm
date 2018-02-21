@@ -27,7 +27,9 @@ var geo_options = {
 
 //Make document.cookie readable as an object
 if (document.cookie === "") {
-    document.cookie = JSON.stringify({spokenFeedBackOn:true});
+    document.cookie = JSON.stringify({
+        spokenFeedBackOn: true
+    });
 }
 var cookie = JSON.parse(document.cookie);
 
@@ -38,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.location = "../settings.html";
     }
 
+    //if overview page, make get request
     if (document.title == "Overview") {
         $.getJSON('https://cap-swarm.herokuapp.com', {
             carColor: cookie.color,
@@ -54,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById("overviewList").append(li);
             });
         });
-
     }
 
     //If on a page with dropdowns, dynamically load saved responses
@@ -68,6 +70,12 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+    
+    //If main page, set up volume toggle button state
+    if (document.getElementById("voiceToggle") && !cookie.spokenFeedBackOn){
+        cookie.spokenFeedBackOn = true;
+        toggleSpokenFeedback();
+    }
 });
 /*---------------------------------------Functions---------------------------------------*/
 /*
@@ -80,7 +88,9 @@ function updateInstruction(text, icon) {
     document.getElementById("spinner").style.display = "none";
     document.getElementById("instructionText").innerHTML = text;
     document.getElementById("instructionIcon").setAttribute("src", "img/" + icon + ".png");
-    if(cookie.spokenFeedBackOn){responsiveVoice.speak(text);}
+    if (cookie.spokenFeedBackOn) {
+        responsiveVoice.speak(text);
+    }
 }
 
 /*
@@ -100,7 +110,7 @@ function updateLocation(lat, long) {
             //fake data
             data = {
                 text: "Turn left",
-                icon:"left",
+                icon: "left",
             }
             console.log(data);
             updateInstruction(data.text, data.icon);
@@ -135,16 +145,16 @@ function updateDropdown(elem, value) {
 /*
 Toggle spoken feedback
 */
-function toggleSpokenFeedback(){
-    let val = cookie.spokenFeedBackOn ? (
-        !cookie.spokenFeedBackOn
-        
-        ) : true;
-    if (cookie.spokenFeedBackOn === false || cookie.spokenFeedBackOn === undefined){
+function toggleSpokenFeedback() {
+    let val = cookie.spokenFeedBackOn ? (!cookie.spokenFeedBackOn
+
+    ) : true;
+    if (cookie.spokenFeedBackOn === false) {
         updateSetting(null, "spokenFeedBackOn", true);
         document.getElementById("voiceToggle").classList.remove("lighten-3");
         document.getElementById("voiceToggle").classList.add("accent-2");
-    }else{
+    }
+    else {
         updateSetting(null, "spokenFeedBackOn", false);
         document.getElementById("voiceToggle").classList.remove("accent-2");
         document.getElementById("voiceToggle").classList.add("lighten-3");
