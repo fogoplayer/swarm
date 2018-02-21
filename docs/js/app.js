@@ -15,7 +15,7 @@ if ('serviceWorker' in navigator) {
 if ("geolocation" in navigator) {
     navigator.geolocation.watchPosition(function(position) {
         updateLocation(position.coords.latitude, position.coords.longitude);
-    }, function() {}, geo_options);
+    }, function() {console.log("too fast");}, geo_options);
 }
 else {
     alert("Please update your browser to one that supports geolocation, such as Google Chrome or Mozilla Firefox.");
@@ -23,6 +23,7 @@ else {
 var geo_options = {
     enableHighAccuracy: false,
     maximumAge: 3000,
+    timeout:3000,
 };
 
 //Make document.cookie readable as an object
