@@ -22,7 +22,7 @@ else {
 }
 var geo_options = {
     enableHighAccuracy: false,
-    maximumAge: 4000,
+    maximumAge: 3000,
 };
 
 //Make document.cookie readable as an object
@@ -102,8 +102,8 @@ Update onscreen display of the user's current location
 function updateLocation(lat, long) {
     document.getElementById("locationOutput").innerHTML = JSON.stringify(lat) + ", " + JSON.stringify(long);
     console.log(JSON.stringify(lat) + ", " + JSON.stringify(long));
-    var tempTime = Date.now()
-    console.log(time - tempTime + " sec");
+    var tempTime = Date.now();
+    console.log((tempTime - time)/1000 + " sec");
     time = tempTime;
     $.getJSON('https://cap-swarm.herokuapp.com', {
             id: cookie.id,
@@ -116,7 +116,7 @@ function updateLocation(lat, long) {
                 text: "Turn left",
                 icon: "left",
             }
-            console.log(data);
+            //console.log(data);
             updateInstruction(data.text, data.icon);
         });
 }
