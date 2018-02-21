@@ -93,6 +93,7 @@ function updateInstruction(text, icon) {
     }
 }
 
+var time = new Date.getTime();
 /*
 Update onscreen display of the user's current location
 @param lat - device latitude
@@ -101,6 +102,9 @@ Update onscreen display of the user's current location
 function updateLocation(lat, long) {
     document.getElementById("locationOutput").innerHTML = JSON.stringify(lat) + ", " + JSON.stringify(long);
     console.log(JSON.stringify(lat) + ", " + JSON.stringify(long));
+    var tempTime = new Date.getTime()
+    console.log(time - tempTime + " sec");
+    time = tempTime;
     $.getJSON('https://cap-swarm.herokuapp.com', {
             id: cookie.id,
             lat: lat,
