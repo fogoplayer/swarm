@@ -11,26 +11,11 @@ if ('serviceWorker' in navigator) {
         });
 }
 
-/*//Set up location
-if ("geolocation" in navigator) {
-    navigator.geolocation.watchPosition(function(position) {
-        updateLocation(position.coords.latitude, position.coords.longitude);
-    }, function() {}, geo_options);
-}
-else {
-    alert("Please update your browser to one that supports geolocation, such as Google Chrome or Mozilla Firefox.");
-}
-var geo_options = {
-    enableHighAccuracy: false,
-    maximumAge: 10,
-};*/
-
-setInterval(getLocation, 1000)
-function getLocation(){
+setInterval(function(){
     navigator.geolocation.getCurrentPosition(function(position){
         updateLocation(position.coords.latitude, position.coords.longitude);
     });
-}
+}, 100)
 
 //Make document.cookie readable as an object
 if (document.cookie === "") {
