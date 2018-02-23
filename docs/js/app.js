@@ -11,20 +11,26 @@ if ('serviceWorker' in navigator) {
         });
 }
 
-//Set up location
+/*//Set up location
 if ("geolocation" in navigator) {
     navigator.geolocation.watchPosition(function(position) {
         updateLocation(position.coords.latitude, position.coords.longitude);
-    }, function() {console.log("too fast");}, geo_options);
+    }, function() {}, geo_options);
 }
 else {
     alert("Please update your browser to one that supports geolocation, such as Google Chrome or Mozilla Firefox.");
 }
 var geo_options = {
     enableHighAccuracy: false,
-    maximumAge: 000,
-    timeout:3000,
-};
+    maximumAge: 10,
+};*/
+
+setInterval(getLocation, 1000)
+function getLocation(){
+    navigator.geolocation.getCurrentPosition(function(position){
+        updateLocation(position.coords.latitude, position.coords.longitude);
+    });
+}
 
 //Make document.cookie readable as an object
 if (document.cookie === "") {
@@ -94,7 +100,6 @@ function updateInstruction(text, icon) {
     }
 }
 
-var time = Date.now();
 /*
 Update onscreen display of the user's current location
 @param lat - device latitude
@@ -103,9 +108,6 @@ Update onscreen display of the user's current location
 function updateLocation(lat, long) {
     document.getElementById("locationOutput").innerHTML = JSON.stringify(lat) + ", " + JSON.stringify(long);
     console.log(JSON.stringify(lat) + ", " + JSON.stringify(long));
-    var tempTime = Date.now();
-    console.log((tempTime - time)/1000 + " sec");
-    time = tempTime;
     $.getJSON('https://cap-swarm.herokuapp.com', {
             id: cookie.id,
             lat: lat,
@@ -117,7 +119,7 @@ function updateLocation(lat, long) {
                 text: "Turn left",
                 icon: "left",
             }
-            //console.log(data);
+            console.log(data);
             updateInstruction(data.text, data.icon);
         });
 }
