@@ -11,11 +11,26 @@ if ('serviceWorker' in navigator) {
         });
 }
 
-setInterval(function(){
+/*//Set up location
+if ("geolocation" in navigator) {
+    navigator.geolocation.watchPosition(function(position) {
+        updateLocation(position.coords.latitude, position.coords.longitude);
+    }, function() {}, geo_options);
+}
+else {
+    alert("Please update your browser to one that supports geolocation, such as Google Chrome or Mozilla Firefox.");
+}
+var geo_options = {
+    enableHighAccuracy: false,
+    maximumAge: 10,
+};*/
+
+setInterval(getLocation, 1000)
+function getLocation(){
     navigator.geolocation.getCurrentPosition(function(position){
         updateLocation(position.coords.latitude, position.coords.longitude);
     });
-}, 100)
+}
 
 //Make document.cookie readable as an object
 if (document.cookie === "") {
@@ -100,13 +115,28 @@ function updateLocation(lat, long) {
         },
         function(data) {
             //fake data
-            data = {
-                text: "Turn left",
-                icon: "left",
+            data = fakeData();
+            
+            if(data.exists){
+                console.log(data);
+                updateInstruction(data.text, data.icon);
             }
-            console.log(data);
-            updateInstruction(data.text, data.icon);
         });
+}
+/*
+Generates fake data for app to use
+@return Returns a data object reflective of potential server responses
+*/
+function fakeData(){
+    let ran = Math.random()
+    if (ran < 90){
+        data = { exists: false, text: "Turn left", icon: "left"}
+    }else if (ran < 95){
+        data = { exists: true, text: "Turn right", icon: "right" }
+    }else{
+        data = { exists: true, text: "Turn left", icon: "left" }
+    }
+    return data
 }
 
 /*
