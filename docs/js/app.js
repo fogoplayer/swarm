@@ -11,20 +11,7 @@ if ('serviceWorker' in navigator) {
         });
 }
 
-/*//Set up location
-if ("geolocation" in navigator) {
-    navigator.geolocation.watchPosition(function(position) {
-        updateLocation(position.coords.latitude, position.coords.longitude);
-    }, function() {}, geo_options);
-}
-else {
-    alert("Please update your browser to one that supports geolocation, such as Google Chrome or Mozilla Firefox.");
-}
-var geo_options = {
-    enableHighAccuracy: false,
-    maximumAge: 10,
-};*/
-
+//Set up location
 setInterval(getLocation, 1000)
 function getLocation(){
     navigator.geolocation.getCurrentPosition(function(position){
@@ -39,6 +26,11 @@ if (document.cookie === "") {
     });
 }
 var cookie = JSON.parse(document.cookie);
+
+//Prompt for spoken feedback permissions
+if(cookie.spokenFeedBackOn){
+    responsiveVoice.speak("");
+}
 
 //Code to run once content is loaded
 document.addEventListener("DOMContentLoaded", function() {
@@ -107,7 +99,7 @@ Update onscreen display of the user's current location
 */
 function updateLocation(lat, long) {
     document.getElementById("locationOutput").innerHTML = JSON.stringify(lat) + ", " + JSON.stringify(long);
-    console.log(JSON.stringify(lat) + ", " + JSON.stringify(long));
+    //console.log(JSON.stringify(lat) + ", " + JSON.stringify(long));
     $.getJSON('https://cap-swarm.herokuapp.com', {
             id: cookie.id,
             lat: lat,
@@ -116,7 +108,7 @@ function updateLocation(lat, long) {
         function(data) {
             //fake data
             data = fakeData();
-            console.log(data);
+            //console.log(data);
             if(data.exists){
                 console.log(data);
                 updateInstruction(data.text, data.icon);
@@ -173,6 +165,7 @@ function toggleSpokenFeedback() {
     ) : true;
     if (cookie.spokenFeedBackOn === false) {
         updateSetting(null, "spokenFeedBackOn", true);
+        responsiveVoice.speak("");
         document.getElementById("voiceToggle").classList.remove("lighten-3");
         document.getElementById("voiceToggle").classList.add("accent-2");
     }
