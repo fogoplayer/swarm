@@ -116,7 +116,7 @@ function updateLocation(lat, long) {
         function(data) {
             //fake data
             data = fakeData();
-            
+            console.log(data);
             if(data.exists){
                 console.log(data);
                 updateInstruction(data.text, data.icon);
@@ -129,9 +129,9 @@ Generates fake data for app to use
 */
 function fakeData(){
     let ran = Math.random()
-    if (ran < 90){
+    if (ran < .90){
         data = { exists: false, text: "Turn left", icon: "left"}
-    }else if (ran < 95){
+    }else if (ran < .95){
         data = { exists: true, text: "Turn right", icon: "right" }
     }else{
         data = { exists: true, text: "Turn left", icon: "left" }
