@@ -12,12 +12,11 @@ if ('serviceWorker' in navigator) {
 }
 
 //Set up location
-setInterval(getLocation, 1000)
-function getLocation(){
+setInterval(function(){
     navigator.geolocation.getCurrentPosition(function(position){
         updateLocation(position.coords.latitude, position.coords.longitude);
     });
-}
+}, 100);
 
 //Make document.cookie readable as an object
 if (document.cookie === "") {
@@ -46,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
             carType: cookie.type,
             carOrientation: cookie.orientation
         }, function(data) {
-            console.log(data);
+            data.exists ? console.log(data) : null;
             updateSetting(null, "id", data.id);
             //Fake data
             data.instructions = ["Back up and go left", "Go forward"];
