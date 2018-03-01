@@ -1,6 +1,8 @@
 import time
 import math
 
+i = 0.0
+
 def test(array):
     if len(array) < 18:
         time.sleep(.001)
@@ -14,8 +16,6 @@ def runAlgorithm(array):
     i += 1
     print(str(format((i/262144.0 * 100.0), '.6f')) + "%\t" + str(array))
 
-
-i = 0.0
 startTime = time.time();
 test([]);
 endTime = time.time()
