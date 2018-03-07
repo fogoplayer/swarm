@@ -8,8 +8,8 @@ def test(array):
     #1ms delay to prevent lag
     if len(array) < 18:
         time.sleep(.001)
-        test(array + ['T']);
-        test(array + ['F']);
+        test(array.append[True]);
+        test(array.append[False]);
     else:
         #if array is complete, execute algorithm
         runAlgorithm(array)
