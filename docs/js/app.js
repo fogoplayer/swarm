@@ -26,11 +26,6 @@ if (document.cookie === "") {
 }
 var cookie = JSON.parse(document.cookie);
 
-//Prompt for spoken feedback permissions
-if(cookie.spokenFeedBackOn){
-    responsiveVoice.speak("");
-}
-
 //Code to run once content is loaded
 document.addEventListener("DOMContentLoaded", function() {
     if (document.title == "Overview" && !(cookie.orientation && cookie.color && cookie.type)) {
