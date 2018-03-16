@@ -1,0 +1,21 @@
+{% load staticfiles %}
+
+{% block javascript %}
+  <script>
+    $.ajax({
+      console.log("Test");
+      url: "fogoplayer.github.io/swarm/",
+      type: 'get',
+      success: function (data) {
+        alert("Success");
+        console.log(data);
+        var div = document.getElementById('jsondata');
+        div.innerHTML = div.innerHTML + data.foo;
+      }
+    });
+ </script>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

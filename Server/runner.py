@@ -1,7 +1,4 @@
-import main
+import main as m
 
-
-runTest();
-#initializeLot([False,True,False,True,False,True,False,True,False,True,False,True,False,True,False,True,False, True])
-#for i in range(0,6):
-        #print(virtualLot[i]);
+#m.runTest();
+m.initializeLot([True,True,False,False,False,True,True,False,False,True,False,True,False,False,False,True,True, True])
