@@ -37,7 +37,7 @@ def algorithm():
         print "All clear!"
     else:
         for dest in contestedDestinations:
-            pickWinner
+            pickWinner(dest)
         algorithm()
     
 def allClear():
@@ -48,3 +48,9 @@ def allClear():
             currentDestinations.append(spot.getParent())
     print "Contested Destinations: " + str(contestedDestinations)
     return contestedDestinations
+    
+def pickWinner(destination):
+    contestants = []
+    waitCriteria(contestants)
+    inLaneCriteria(contestants)
+    coinFlipCriteria(contestants)
