@@ -50,7 +50,18 @@ def allClear():
     return contestedDestinations
     
 def pickWinner(destination):
-    contestants = []
+    contestants = virtualLot[destination[0]][destination[1]].getChildren()
+    
     waitCriteria(contestants)
-    inLaneCriteria(contestants)
-    coinFlipCriteria(contestants)
+    '''inLaneCriteria(contestants)
+    coinFlipCriteria(contestants)'''
+
+def waitCriteria(contestants):
+    for contestant in contestants
+    
+    
+    
+    
+def returnOccupant(array):
+    #takes the virtualLot coordinates passed to it, gets the occupant ID, and uses that to find the occupant in the occupant array
+    return occupants[virtualLot[array[0]][[array[1]]].getOccupantId()]
