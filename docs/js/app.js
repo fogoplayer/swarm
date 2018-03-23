@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
             data.instructions = ["Back up and go left", "Go forward"];
             data.instructions.forEach(function(instruction) {
                 var li = document.createElement("li");
-                var h = li.append("h1");
+                var h = li.append("h5");
                 h.append(instruction);
                 document.getElementById("overviewList").append(li);
             });
