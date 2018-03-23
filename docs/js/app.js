@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
             data.instructions = ["Back up and go left", "Go forward"];
             data.instructions.forEach(function(instruction) {
                 var li = document.createElement("li");
+                li.style.fontSize = 24
                 li.append(instruction);
                 document.getElementById("overviewList").append(li);
             });
