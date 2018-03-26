@@ -499,7 +499,7 @@ else var ResponsiveVoice = function() {
     a.fallback_audiopool_index = 0
    }
   };
-  a.allowSpeechClicked = function(b) { a.allowSpeechDiv.parentNode.removeChild(a.allowSpeechDiv);
+  a.allowSpeechClicked = function(b) { /*a.allowSpeechDiv.parentNode.removeChild(a.allowSpeechDiv);*/
    a.allowSpeechDiv = null; if (a.speechAllowedByUser = b) a.clickEvent(), a.scheduledSpeak && (a.speak(a.scheduledSpeak.text, a.scheduledSpeak.voicename, a.scheduledSpeak.parameters), a.scheduledSpeak = null);
    a.Dispatch("OnAllowSpeechClicked") };
   a.checkSpeechAllowed = function() {
