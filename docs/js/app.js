@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 /*var h = document.createElement("h5");
                 h.append(instruction);
                 li.append(h);*/
-                li.appendChild(instruction)
+                li.append(instruction)
                 document.getElementById("overviewList").append(li);
             });
         });
