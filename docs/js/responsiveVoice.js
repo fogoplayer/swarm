@@ -504,21 +504,21 @@ else var ResponsiveVoice = function() {
    a.Dispatch("OnAllowSpeechClicked") };
   a.checkSpeechAllowed = function() {
    a.allowSpeechClicked(true);
-   // if (0 == a.speechAllowedByUser) return !1;
-   // if ((a.is_android || a.iOS || a.is_safari &&
-   //   (a.fallbackMode || a.forcedFallbackMode)) && !a.click_event_detected) {
-   //  if (a.allowSpeechDiv) return;
-   //  a.allowSpeechDiv_appearances = null == a.allowSpeechDiv_appearances ? 1 : ++a.allowSpeechDiv_appearances;
-   //  if (2 < a.allowSpeechDiv_appearances) return console.log("ResponsiveVoice: Speech not allowed by user"), !1;
-   //  var b = document.createElement("style");
-   //  b.innerHTML = '.rvNotification{position:fixed;background-color:#fff;text-align:center;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-weight:400;line-height:1.5;box-shadow:0 4px 8px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);z-index:10000;width:100vw;left:0;bottom:0;font-size:1rem;padding-bottom:.5em;padding-right:.5em}.rvButtonRow{padding-right:2em;padding-bottom:1em;text-align:right;font-size:medium}.rvButton{cursor:pointer;display:inline-block;margin-left:1em;padding:.8em 2em;border-radius:3px;font-size:small}.rvButtonAllow{border:none;background-color:#2b8cff;color:#fff}.rvButtonDeny{border:1px solid #2b8cff;color:#2b8cff;background-color:#fff}.rvTextRow{padding-top:1em;padding-bottom:2em}@media (min-width:576px){.rvNotification{width:60vw;left:20vw}}@media (min-width:768px){.rvNotification{width:50vw;left:25vw}}@media (min-width:992px){.rvNotification{width:40vw;left:30vw}}@media (min-width:1200px){.rvNotification{width:30vw;left:35vw}}';
-   //  document.body.appendChild(b);
-   //  a.allowSpeechDiv = document.createElement("div");
-   //  a.allowSpeechDiv.classList.add("rvNotification");
-   //  a.allowSpeechDiv.innerHTML = '<div class="rvTextRow"><strong>' + window.location.hostname + '</strong> wants to use speech</div><div class="rvButtonRow"><div onclick="responsiveVoice.allowSpeechClicked(false);" class="rvButton rvButtonDeny">DENY</div><div onclick="responsiveVoice.allowSpeechClicked(true);" class="rvButton rvButtonAllow">ALLOW</div></div>';
-   //  document.body.appendChild(a.allowSpeechDiv);
-   //  return !1
-   }
+   /*if (0 == a.speechAllowedByUser) return !1;
+   if ((a.is_android || a.iOS || a.is_safari &&
+     (a.fallbackMode || a.forcedFallbackMode)) && !a.click_event_detected) {
+    if (a.allowSpeechDiv) return;
+    a.allowSpeechDiv_appearances = null == a.allowSpeechDiv_appearances ? 1 : ++a.allowSpeechDiv_appearances;
+    if (2 < a.allowSpeechDiv_appearances) return console.log("ResponsiveVoice: Speech not allowed by user"), !1;
+    var b = document.createElement("style");
+    b.innerHTML = '.rvNotification{position:fixed;background-color:#fff;text-align:center;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-weight:400;line-height:1.5;box-shadow:0 4px 8px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);z-index:10000;width:100vw;left:0;bottom:0;font-size:1rem;padding-bottom:.5em;padding-right:.5em}.rvButtonRow{padding-right:2em;padding-bottom:1em;text-align:right;font-size:medium}.rvButton{cursor:pointer;display:inline-block;margin-left:1em;padding:.8em 2em;border-radius:3px;font-size:small}.rvButtonAllow{border:none;background-color:#2b8cff;color:#fff}.rvButtonDeny{border:1px solid #2b8cff;color:#2b8cff;background-color:#fff}.rvTextRow{padding-top:1em;padding-bottom:2em}@media (min-width:576px){.rvNotification{width:60vw;left:20vw}}@media (min-width:768px){.rvNotification{width:50vw;left:25vw}}@media (min-width:992px){.rvNotification{width:40vw;left:30vw}}@media (min-width:1200px){.rvNotification{width:30vw;left:35vw}}';
+    document.body.appendChild(b);
+    a.allowSpeechDiv = document.createElement("div");
+    a.allowSpeechDiv.classList.add("rvNotification");
+    a.allowSpeechDiv.innerHTML = '<div class="rvTextRow"><strong>' + window.location.hostname + '</strong> wants to use speech</div><div class="rvButtonRow"><div onclick="responsiveVoice.allowSpeechClicked(false);" class="rvButton rvButtonDeny">DENY</div><div onclick="responsiveVoice.allowSpeechClicked(true);" class="rvButton rvButtonAllow">ALLOW</div></div>';
+    document.body.appendChild(a.allowSpeechDiv);
+    return !1
+   }*/
    return !0
   };
   a.fallback_audioPool_getAudio = function() { a.initFallbackPool();
