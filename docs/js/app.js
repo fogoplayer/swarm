@@ -11,13 +11,6 @@ if ('serviceWorker' in navigator) {
         });
 }
 
-//Set up location
-setInterval(function(){
-    navigator.geolocation.getCurrentPosition(function(position){
-        updateLocation(position.coords.latitude, position.coords.longitude);
-    });
-}, 100);
-
 //Make document.cookie readable as an object
 if (document.cookie === "") {
     document.cookie = JSON.stringify({
@@ -71,6 +64,13 @@ document.addEventListener("DOMContentLoaded", function() {
     if (document.getElementById("voiceToggle") && !cookie.spokenFeedBackOn){
         cookie.spokenFeedBackOn = true;
         toggleSpokenFeedback();
+        
+        //Set up location
+        setInterval(function(){
+            navigator.geolocation.getCurrentPosition(function(position){
+                updateLocation(position.coords.latitude, position.coords.longitude);
+            });
+        }, 1000);
     }
 });
 /*---------------------------------------Functions---------------------------------------*/
