@@ -1,8 +1,9 @@
 #main function
 
-virtualLot=[]
+virtualLot = []
 newLot = []
-occupants=[]
+occupants = []
+
 
 def mainFunction(vLot, occ):
     global virtualLot
@@ -12,7 +13,7 @@ def mainFunction(vLot, occ):
     occupants = occ
     newLot = virtualLot
     
-    #Move all cars to their default states, starting at exit point
+    # Move all cars to their default states, starting at exit point
     tellAllCarsToGo()
     algorithm()
     print ""
@@ -25,10 +26,12 @@ def mainFunction(vLot, occ):
     
     return newLot
 
+
 def tellAllCarsToGo():
     for spot in occupants:
         if spot.occupantID != None:
             spot.setGoing(True)
+
 
 def algorithm():
     contestedDestinations = allClear()
@@ -39,7 +42,8 @@ def algorithm():
         for dest in contestedDestinations:
             pickWinner(dest)
         algorithm()
-    
+
+
 def allClear():
     currentDestinations = []
     contestedDestinations = []
@@ -48,7 +52,8 @@ def allClear():
             currentDestinations.append(spot.getParent())
     print "Contested Destinations: " + str(contestedDestinations)
     return contestedDestinations
-    
+
+
 def pickWinner(destination):
     contestants = virtualLot[destination[0]][destination[1]].getChildren()
     
@@ -56,12 +61,12 @@ def pickWinner(destination):
     '''inLaneCriteria(contestants)
     coinFlipCriteria(contestants)'''
 
+
 def waitCriteria(contestants):
-    for contestant in contestants
-    
-    
-    
+    for contestant in contestants:
+        print    # Stub
+
     
 def returnOccupant(array):
-    #takes the virtualLot coordinates passed to it, gets the occupant ID, and uses that to find the occupant in the occupant array
+    # takes the virtualLot coordinates passed to it, gets the occupant ID, and uses that to find the occupant in the occupant array
     return occupants[virtualLot[array[0]][[array[1]]].getOccupantId()]
