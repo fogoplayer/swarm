@@ -500,7 +500,7 @@ else var ResponsiveVoice = function() {
    }
   };
   a.allowSpeechClicked = function(b) { /*a.allowSpeechDiv.parentNode.removeChild(a.allowSpeechDiv);*/
-   a.allowSpeechDiv = null; if (a.speechAllowedByUser = b) a.clickEvent(), a.scheduledSpeak && (a.speak(a.scheduledSpeak.text, a.scheduledSpeak.voicename, a.scheduledSpeak.parameters), a.scheduledSpeak = null);
+   a.allowSpeechDiv = null; if (a.speechAllowedByUser == b) a.clickEvent(), a.scheduledSpeak && (a.speak(a.scheduledSpeak.text, a.scheduledSpeak.voicename, a.scheduledSpeak.parameters), a.scheduledSpeak = null);
    a.Dispatch("OnAllowSpeechClicked") };
   a.checkSpeechAllowed = function() {
    a.allowSpeechClicked(true);
