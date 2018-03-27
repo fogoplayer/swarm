@@ -117,15 +117,16 @@ Generates fake data for app to use
 @return Returns a data object reflective of potential server responses
 */
 function fakeData(){
-    let ran = Math.random()
-    if (ran < .90){
-        data = { exists: false, text: "Turn left", icon: "left"}
-    }else if (ran < .95){
-        data = { exists: true, text: "Turn right", icon: "right" }
+    let ran = Math.random();
+    let data;
+    if (ran < .50){
+        data = { exists: false, text: "Turn left", icon: "left"};
+    }else if (ran < .75){
+        data = { exists: true, text: "Turn right", icon: "right" };
     }else{
-        data = { exists: true, text: "Turn left", icon: "left" }
+        data = { exists: true, text: "Turn left", icon: "left" };
     }
-    return data
+    return data;
 }
 
 /*
