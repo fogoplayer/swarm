@@ -22,8 +22,7 @@ def mainFunction(vLot, occ):
             for x in y:
                 printString += x.toString()
             print printString
-            
-    
+
     return newLot
 
 

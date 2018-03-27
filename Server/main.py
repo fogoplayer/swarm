@@ -20,7 +20,6 @@ class Occupant:
         self.carType = carType
         self.destination = dest
 
-
     def getNextInstruction(self):
         return self.nextInstruction
 
@@ -55,7 +54,7 @@ class Spot:
     occupantID = None
     children = []
     
-    def __init__(self, parent, children, occupantID):
+    def __init__(self, parent, children, occupantID, occupant):
         self.parent = parent
         self.occupantID = occupantID
         self.children = children
