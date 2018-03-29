@@ -1,9 +1,9 @@
-import requests
 
 
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
+import main
 
 
 from .models import Greeting
@@ -11,15 +11,15 @@ from .models import Greeting
 
 # Create your views here.
 def index(request):
-    cars = [
-        [0, "Truck", "wait"],
-        [1, "Sports Car", "Turn left"],
-        [2, "MiniVan", "Back out and head to your left"],
-        [3, "Bus", "wait"],
-    ]
+    carColor = request[0]
+    carType = request[1]
+    carOrientation = request[2]
+    for spot in main.virtualLot:
+        print  # stub
+        # add the car to the lot and return an ID and instructions
     template = loader.get_template('herokuTest/index.html')
 
-    return JsonResponse(cars, safe=False)
+    return JsonResponse("placeholder", safe=False)  # write code to return id and instructions
 
 
 def save_events_json(request):
