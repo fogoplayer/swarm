@@ -4,7 +4,37 @@ import time
 import math
 import algorithm as a
 
-#Occupant Class-----------------------------------------------------------------
+#Spot Class
+class Spot:
+    parent = None
+    occupantID = None
+    children = []
+    isLane = False
+    
+    def __init__(self, parent, children, lane, occupantID):
+        self.parent = parent
+        self.occupantID = occupantID
+        self.children = children
+        self.isLane = lane
+        
+    def getParent(self):
+        return self.parent
+        
+    def getChildren(self):
+        return self.children
+        
+    def setOccupantID(self, occupant):
+        self.occupantID = occupant
+        
+    def getOccupantID(self):
+        return self.occupantID
+        
+    def toString(self):
+        return "Parent: " + str(self.parent) + " Children:" + str(self.children) + " Occupant:" + str(self.occupantID) + "\t"
+    
+    def getInLane(self):
+        return self.isLane
+        
 class Occupant:
     carColor = ""
     carType = ""
@@ -45,43 +75,17 @@ class Occupant:
     def getWaitedForNCars(self):
         return self.waitedForNCars
 
-#Spot Class
-class Spot:
-    parent = None
-    occupantID = None
-    children = []
-    
-    def __init__(self, parent, children, occupantID):
-        self.parent = parent
-        self.occupantID = occupantID
-        self.children = children
-        
-    def getParent(self):
-        return self.parent
-        
-    def getChildren(self):
-        return self.children
-        
-    def setOccupantID(self, occupant):
-        self.occupantID = occupant
-        
-    def getOccupantID(self):
-        return self.occupantID
-        
-    def toString(self):
-        return "Parent: " + str(self.parent) + " Children:" + str(self.children) + " Occupant:" + str(self.occupantID) + "\t"
-        
-
 #Lot----------------------------------------------------------------------------
 virtualLot = [
-                [Spot(None , [None]       , None), Spot(None , [None] , None), Spot(None , [[1,2]]      , None), Spot(None , [None]       , None)],
-                [Spot([1,1], [[2,0]]      , None), Spot([1,2], [[1,0]], None), Spot([0,3], [[1,1],[1,3]], None), Spot([1,3], [[2,0]]      , None)],
-                [Spot([1,0], [[3,0],[2,1]], None), Spot([2,0], [None] , None), Spot([2,3], [None]       , None), Spot([1,3], [[3,0],[2,2]], None)],
-                [Spot([2,0], [[4,0],[3,1]], None), Spot([3,0], [None] , None), Spot([3,3], [None]       , None), Spot([2,3], [[4,0],[3,2]], None)],
-                [Spot([3,0], [[5,0],[4,1]], None), Spot([4,0], [None] , None), Spot([4,3], [None]       , None), Spot([3,3], [[5,0],[4,2]], None)],
-                [Spot([4,0], [None]       , None), Spot(None , [None] , None), Spot(None , [None]       , None), Spot([4,3], [None]       , None)]
+                [Spot(None , [None]       ,False , None), Spot(None , [None] ,True , None), Spot(None , [[1,2]]      ,True , None), Spot(None , [None]       ,False , None)],
+                [Spot([1,1], [[2,0]]      ,True , None), Spot([1,2], [[1,0]],False , None), Spot([0,3], [[1,1],[1,3]],True , None), Spot([1,3], [[2,3]]      ,True , None)],
+                [Spot([1,0], [[3,0],[2,1]],True , None), Spot([2,0], [None] ,False , None), Spot([2,3], [None]       ,False , None), Spot([1,3], [[3,3],[2,2]],True , None)],
+                [Spot([2,0], [[4,0],[3,1]],True , None), Spot([3,0], [None] ,False , None), Spot([3,3], [None]       ,False , None), Spot([2,3], [[4,3],[3,2]],True , None)],
+                [Spot([3,0], [[5,0],[4,1]],True , None), Spot([4,0], [None] ,False , None), Spot([4,3], [None]       ,False , None), Spot([3,3], [[5,3],[4,2]],True , None)],
+                [Spot([4,0], [None]       ,True , None), Spot(None , [None] ,False , None), Spot(None , [None]       ,False , None), Spot([4,3], [None]       ,True , None)]
         ]
 occupants = []
+
 def initializeLot(array):
         '''Takes an array representing a test lot and populates the virtualLot'''
         arrayIndex = 0
@@ -93,10 +97,11 @@ def initializeLot(array):
                     if (array[arrayIndex]):
                             x.setOccupantID(index)
                             occupants += [Occupant("blue", "sedan", x.getParent())]
+                            index += 1
                     else:
                             x.setOccupantID(None)
                     arrayIndex += 1
-                    index += 1
+                    
         for y in virtualLot:
             printString = ""
             for x in y:

@@ -1,5 +1,5 @@
 var cacheName = 'swarm';
-var dataCacheName = "swarm-v2"
+var dataCacheName = "swarm-v1"
 var filesToCache = [
     'index.html',
     'settings.html',
@@ -9,6 +9,7 @@ var filesToCache = [
     'js/materialize.min.js',
     'js/responsiveVoice.js',
     'styles/materialize.min.css',
+    'img/blank.png',
     'img/back_left.png',
     'img/back_right.png',
     'img/forward.png',
