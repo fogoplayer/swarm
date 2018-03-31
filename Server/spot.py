@@ -1,13 +1,13 @@
 #Spot Class
 class Spot:
     parent = None
-    occupantID = None
+    occupantId = None
     children = []
     isLane = False
     
-    def __init__(self, parent, children, lane, occupantID):
+    def __init__(self, parent, children, lane, occupantId):
         self.parent = parent
-        self.occupantID = occupantID
+        self.occupantId = occupantId
         self.children = children
         self.isLane = lane
         
@@ -17,14 +17,14 @@ class Spot:
     def getChildren(self):
         return self.children
         
-    def setOccupantID(self, occupant):
-        self.occupantID = occupant
+    def setOccupantId(self, occupant):
+        self.occupantId = occupant
         
-    def getOccupantID(self):
-        return self.occupantID
+    def getOccupantId(self):
+        return self.occupantId
         
     def toString(self):
-        return "Parent: " + str(self.parent) + " Children:" + str(self.children) + " Occupant:" + str(self.occupantID) + "\t"
+        return "Parent: " + str(self.parent) + " Children:" + str(self.children) + " Occupant:" + str(self.occupantId) + "\t"
         
     def getIsLane(self):
         return self.isLane
