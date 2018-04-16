@@ -5,7 +5,6 @@ virtualLot = []
 newLot = []
 occupants = []
 
-
 def mainFunction(vLot, occ):
     global virtualLot
     global occupants
@@ -13,12 +12,10 @@ def mainFunction(vLot, occ):
     virtualLot = vLot
     occupants = occ
     newLot = virtualLot
-    print "Lane is " + str(virtualLot[2][2].isLane)
-    
+            
     # Move all cars to their default states, starting at exit point
     tellAllCarsToGo()
     algorithm()
-    print ""
     for y in newLot:
             printString = ""
             for x in y:
@@ -34,6 +31,7 @@ def tellAllCarsToGo():
 
 
 def algorithm():
+    print 'begin algorithm'                                                     #Debug print
     contestedDestinations = findContestedDestinations()
     if(len(contestedDestinations) == 0):
         #TODO Push new lot
@@ -47,21 +45,26 @@ def findContestedDestinations():
     currentDestinations = []
     contestedDestinations = []
     for occupant in occupants:
-        print currentDestinations
         if occupant.isGoing() and (occupant.getDestination() not in currentDestinations) and (occupant.getDestination() not in contestedDestinations):
             currentDestinations.append(occupant.getDestination())
         elif occupant.isGoing() and (occupant.getDestination() in currentDestinations and (occupant.getDestination() not in contestedDestinations)):
             contestedDestinations.append(occupant.getDestination())
-    print "Contested Destinations: " + str(contestedDestinations)
     return contestedDestinations
 
 def pickWinner(destination):
-    #TODO modify so only children who are "going" get added
+    print 'Picking Winner: ' + str(destination)                                 #debug print
     contestants = virtualLot[destination[0]][destination[1]].getChildren()
+    
+    #Remve contestants who aren't going
     contestant = 0
     while contestant < (len(contestants)):
         if not returnOccupant(contestants[contestant]).isGoing():
             contestants.pop(contestant)
+        else:
+            contestant += 1
+    
+    #Run the 3 tests
+    print 'Running tests: ' + str(contestants)                                  #debug print
     contestants = waitCriteria(contestants)
     if len(contestants) > 1:
         contestants = inLaneCriteria(contestants)
@@ -70,28 +73,19 @@ def pickWinner(destination):
     return contestants
 
 def waitCriteria(contestants):
-    '''nCars = []
-    for contestant in contestants:
-        nCars += [contestant.getWaitedforNCars()]
-    record = 0
-    i = 0
-    while(i < len(nCars)):
-        if nCars[i] < record:
-            nCars.pop(i)
-            contestants.pop(i)
-            i -= 1
-        i += 1'''
+    print 'Wait: ' + str(contestants)                                           #debug print
     record = 0
     i = 0
     while(i < len(contestants)):
-        print str(returnOccupant(contestants[i]).getWaitedforNCars()) + " <? " + str(record)
-        if returnOccupant(contestants[i]).getWaitedforNCars() < record:
+        print str(returnOccupant(contestants[i]).getWaitedForNCars()) + " <? " + str(record)
+        if returnOccupant(contestants[i]).getWaitedForNCars() < record:
             contestants.pop(i)
             i -= 1
         i += 1
     return contestants
 
 def inLaneCriteria(contestants):
+    print 'Lane: ' + str(contestants)                                           #debug print
     i=0
     while i < len(contestants):
         y = contestants[i][0]
@@ -103,12 +97,10 @@ def inLaneCriteria(contestants):
     return contestants
     
 def coinFlipCriteria(contestants):#This is still an actual coin flip
-    i = random.randint(0,len(contestants))
+    print 'Flip' + str(contestants)                                             #debug print
+    i = random.randint(0,len(contestants)-1)
     return contestants[i]
 
 def returnOccupant(array):
     # takes the virtualLot coordinates passed to it, gets the occupant Id, and uses that to find the occupant in the occupant array
-    print "Hello " + virtualLot[array[0]][array[1]].toString()                  #HELP Sucessfully returns occupantId as part of user-defiined toString method
-    print "Hello " + virtualLot[array[0]][array[1]].getOccupantId()             #HELP Fails to return occupantId as a part of user-defined getOccupantId method
-    print "Hello " + virtualLot[array[0]][array[1]].occupantId                  #HELP Fails to return occupantId when directly accessing the attribute of the instance object
-    return occupants[virtualLot[array[0]][array[1]].getOccupantId()]            
+    return occupants[virtualLot[array[1]][array[1]].getOccupantID()]

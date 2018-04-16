@@ -30,9 +30,9 @@ class Spot:
         return self.occupantID
         
     def toString(self):
-        return "Parent: " + str(self.parent) + " Children:" + str(self.children) + " Occupant:" + str(self.occupantID) + "\t"
+        return "Parent: " + str(self.getParent()) + " Children:" + str(self.getChildren()) + " Occupant:" + str(self.getOccupantID())
     
-    def getInLane(self):
+    def getIsLane(self):
         return self.isLane
         
 # Occupant Class-----------------------------------------------------------------
@@ -103,11 +103,11 @@ def initializeLot(array):
                             x.setOccupantID(None)
                     arrayIndex += 1
                     
-        for y in virtualLot:
+        '''for y in virtualLot:
             printString = ""
             for x in y:
                 printString += x.toString()
-            print printString
+            print printString'''
 
 
 # Test suite---------------------------------------------------------------------
