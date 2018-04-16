@@ -2,27 +2,25 @@
 import random
 
 virtualLot = []
-newLot = []
 occupants = []
 
 def mainFunction(vLot, occ):
     global virtualLot
     global occupants
-    global newLot
     virtualLot = vLot
     occupants = occ
-    newLot = virtualLot
             
     # Move all cars to their default states, starting at exit point
     tellAllCarsToGo()
     algorithm()
-    for y in newLot:
+    for y in virtualLot:
             printString = ""
             for x in y:
                 printString += x.toString()
             print printString
-
-    return newLot
+    print occupants
+    
+    return [virtualLot, occupants]
 
 
 def tellAllCarsToGo():
@@ -31,7 +29,6 @@ def tellAllCarsToGo():
 
 
 def algorithm():
-    print 'begin algorithm'                                                     #Debug print
     contestedDestinations = findContestedDestinations()
     if(len(contestedDestinations) == 0):
         #TODO Push new lot
@@ -52,7 +49,6 @@ def findContestedDestinations():
     return contestedDestinations
 
 def pickWinner(destination):
-    print 'Picking Winner: ' + str(destination)                                 #debug print
     contestants = virtualLot[destination[0]][destination[1]].getChildren()
     
     #Remve contestants who aren't going
@@ -64,7 +60,6 @@ def pickWinner(destination):
             contestant += 1
     
     #Run the 3 tests
-    print 'Running tests: ' + str(contestants)                                  #debug print
     contestants = waitCriteria(contestants)
     if len(contestants) > 1:
         contestants = inLaneCriteria(contestants)
@@ -73,11 +68,9 @@ def pickWinner(destination):
     return contestants
 
 def waitCriteria(contestants):
-    print 'Wait: ' + str(contestants)                                           #debug print
     record = 0
     i = 0
     while(i < len(contestants)):
-        print str(returnOccupant(contestants[i]).getWaitedForNCars()) + " <? " + str(record)
         if returnOccupant(contestants[i]).getWaitedForNCars() < record:
             contestants.pop(i)
             i -= 1
@@ -85,7 +78,6 @@ def waitCriteria(contestants):
     return contestants
 
 def inLaneCriteria(contestants):
-    print 'Lane: ' + str(contestants)                                           #debug print
     i=0
     while i < len(contestants):
         y = contestants[i][0]
@@ -96,8 +88,7 @@ def inLaneCriteria(contestants):
             i += 1
     return contestants
     
-def coinFlipCriteria(contestants):#This is still an actual coin flip
-    print 'Flip' + str(contestants)                                             #debug print
+def coinFlipCriteria(contestants):
     i = random.randint(0,len(contestants)-1)
     return contestants[i]
 
