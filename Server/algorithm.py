@@ -18,7 +18,7 @@ def mainFunction(vLot, occ):
         for x in y:
             printString += x.toString()
         print printString
-    print occupants
+    print occupants                                                             #TODO set up occupants to print relevant properties rather than python gibberish
     
     # Move all cars to their default states, then run algorithm
     tellAllCarsToGo()
@@ -87,6 +87,7 @@ def waitCriteria(contestants):
     i = 0
     while(i < len(contestants)):
         if returnOccupant(contestants[i]).getWaitedForNCars() < record:
+            contestants[i].setGoing(False);
             contestants.pop(i)
             i -= 1
         i += 1
@@ -98,15 +99,19 @@ def inLaneCriteria(contestants):
         y = contestants[i][0]
         x = contestants[i][1]
         if not virtualLot[y][x].getIsLane():
-            contestants.remove(contestants[i])
+            contestants[i].setGoing(False);
+            contestants.pop(i)
         else:
             i += 1
     return contestants
 
 #Picks randomly between competetors
 def coinFlipCriteria(contestants):
-    i = random.randint(0,len(contestants)-1)
-    return contestants[i]
+    index = random.randint(0,len(contestants)-1)
+    for i in contestants:
+        if (not i == index):
+            contestants[i].setGoing(False);
+    return contestants[index]
 
 # takes the virtualLot coordinates passed to it, gets the occupant Id, and uses that to find the occupant in the occupant array
 def returnOccupant(array):
