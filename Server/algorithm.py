@@ -4,30 +4,43 @@ import random
 virtualLot = []
 occupants = []
 
+#Main routine of the algorithm
 def mainFunction(vLot, occ):
+    #Initialize variables
     global virtualLot
     global occupants
     virtualLot = vLot
     occupants = occ
-            
-    # Move all cars to their default states, starting at exit point
-    tellAllCarsToGo()
-    algorithm()
+    
+    #Print inital virtual lot
     for y in virtualLot:
-            printString = ""
-            for x in y:
-                printString += x.toString()
-            print printString
+        printString = ""
+        for x in y:
+            printString += x.toString()
+        print printString
     print occupants
     
+    # Move all cars to their default states, then run algorithm
+    tellAllCarsToGo()
+    algorithm()
+    
+    #Print new virtual lot
+    for y in virtualLot:
+        printString = ""
+        for x in y:
+            printString += x.toString()
+        print printString
+    print occupants
+    
+    #return lot and occupants
     return [virtualLot, occupants]
 
-
+#Set default state: all cars advance
 def tellAllCarsToGo():
     for occupant in occupants:
         occupant.setGoing(True)
 
-
+#The core algorithm. Executes recursively until everything is good to go
 def algorithm():
     contestedDestinations = findContestedDestinations()
     if(len(contestedDestinations) == 0):
@@ -37,7 +50,8 @@ def algorithm():
         for dest in contestedDestinations:
             pickWinner(dest)
         #algorithm()
-    
+
+#Scans the occupant array for spots that multiple cars are attempting to access
 def findContestedDestinations():
     currentDestinations = []
     contestedDestinations = []
@@ -48,6 +62,7 @@ def findContestedDestinations():
             contestedDestinations.append(occupant.getDestination())
     return contestedDestinations
 
+#Prioritizes cars jockeying for position
 def pickWinner(destination):
     contestants = virtualLot[destination[0]][destination[1]].getChildren()
     
@@ -87,11 +102,12 @@ def inLaneCriteria(contestants):
         else:
             i += 1
     return contestants
-    
+
+#Picks randomly between competetors
 def coinFlipCriteria(contestants):
     i = random.randint(0,len(contestants)-1)
     return contestants[i]
 
+# takes the virtualLot coordinates passed to it, gets the occupant Id, and uses that to find the occupant in the occupant array
 def returnOccupant(array):
-    # takes the virtualLot coordinates passed to it, gets the occupant Id, and uses that to find the occupant in the occupant array
-    return occupants[virtualLot[array[1]][array[1]].getOccupantID()]
+    return occupants[virtualLot[array[1]][array[0]].getOccupantID()]
