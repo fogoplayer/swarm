@@ -19,6 +19,7 @@ def mainFunction(vLot, occ):
             printString += x.toString()
         print printString
     print occupants                                                             #TODO set up occupants to print relevant properties rather than python gibberish
+    print
     
     # Move all cars to their default states, then run algorithm
     tellAllCarsToGo()
@@ -31,6 +32,8 @@ def mainFunction(vLot, occ):
             printString += x.toString()
         print printString
     print occupants
+    print
+    print
     
     #return lot and occupants
     return [virtualLot, occupants]
@@ -99,7 +102,7 @@ def inLaneCriteria(contestants):
         y = contestants[i][0]
         x = contestants[i][1]
         if not virtualLot[y][x].getIsLane():
-            contestants[i].setGoing(False);
+            returnOccupant(contestants[i]).setGoing(False);
             contestants.pop(i)
         else:
             i += 1

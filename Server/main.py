@@ -75,6 +75,9 @@ class Occupant:
 
     def getWaitedForNCars(self):
         return self.waitedForNCars
+        
+    def __repr__(self):
+        return "Is Going:" + str(self.isGoing())
 
 # Lot----------------------------------------------------------------------------
 virtualLot = [
