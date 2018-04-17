@@ -36,7 +36,7 @@ def mainFunction(vLot, occ):
     print
     
     #return lot and occupants
-    return [virtualLot, occupants]
+    return occupants
 
 #Set default state: all cars advance
 def tellAllCarsToGo():
