@@ -5,7 +5,7 @@ virtualLot = []
 occupants = []
 
 #Main routine of the algorithm
-def mainFunction(vLot, occ):
+def main(vLot, occ):
     #Initialize variables
     global virtualLot
     global occupants
