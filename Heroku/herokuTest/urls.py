@@ -22,4 +22,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('', views.save_events_json, name='save_events_json'),
+    path('', views.db, name='db'),
+
 ]
