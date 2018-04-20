@@ -30,7 +30,7 @@ class Spot:
         return self.occupantID
         
     def toString(self):
-        return "Parent: " + str(self.getParent()) + " Children:" + str(self.getChildren()) + " Occupant:" + str(self.getOccupantID())
+        return str(self.getOccupantID())
     
     def getIsLane(self):
         return self.isLane
@@ -77,24 +77,23 @@ class Occupant:
         return self.waitedForNCars
         
     def __repr__(self):
-        return "Is Going:" + str(self.isGoing())
-
-# Lot----------------------------------------------------------------------------
-virtualLot = [
-                [Spot(None , [None]       ,False , None), Spot(None , [None] ,True , None), Spot(None , [[1,2]]      ,True , None), Spot(None , [None]       ,False , None)],
-                [Spot([1,1], [[2,0]]      ,True , None), Spot([1,2], [[1,0]],False , None), Spot([0,3], [[1,1],[1,3]],True , None), Spot([1,3], [[2,3]]      ,True , None)],
-                [Spot([1,0], [[3,0],[2,1]],True , None), Spot([2,0], [None] ,False , None), Spot([2,3], [None]       ,False , None), Spot([1,3], [[3,3],[2,2]],True , None)],
-                [Spot([2,0], [[4,0],[3,1]],True , None), Spot([3,0], [None] ,False , None), Spot([3,3], [None]       ,False , None), Spot([2,3], [[4,3],[3,2]],True , None)],
-                [Spot([3,0], [[5,0],[4,1]],True , None), Spot([4,0], [None] ,False , None), Spot([4,3], [None]       ,False , None), Spot([3,3], [[5,3],[4,2]],True , None)],
-                [Spot([4,0], [None]       ,True , None), Spot(None , [None] ,False , None), Spot(None , [None]       ,False , None), Spot([4,3], [None]       ,True , None)]
-        ]
-occupants = []
+        return str(self.isGoing())
 
 def initializeLot(array):
         '''Takes an array representing a test lot and populates the virtualLot'''
         arrayIndex = 0
         index = 0
+        global virtualLot
         global occupants
+        occupants = []
+        virtualLot = [
+                [Spot(None , [None]       ,False , None), Spot(None , [None] ,True , None), Spot(None , [[1,2]]      ,True , None),  Spot(None , [None]       ,False , None)],
+                [Spot([1,1], [[2,0]]      ,True , None), Spot([1,2], [[1,0]],False , None), Spot([0,2], [[1,1],[1,3]],True , None),  Spot([1,3], [[2,3]]      ,True , None)],
+                [Spot([1,0], [[3,0],[2,1]],True , None), Spot([2,0], [None] ,False , None), Spot([2,3], [None]       ,False , None), Spot([1,3], [[3,3],[2,2]],True , None)],
+                [Spot([2,0], [[4,0],[3,1]],True , None), Spot([3,0], [None] ,False , None), Spot([3,3], [None]       ,False , None), Spot([2,3], [[4,3],[3,2]],True , None)],
+                [Spot([3,0], [[5,0],[4,1]],True , None), Spot([4,0], [None] ,False , None), Spot([4,3], [None]       ,False , None), Spot([3,3], [[5,3],[4,2]],True , None)],
+                [Spot([4,0], [None]       ,True , None), Spot(None , [None] ,False , None), Spot(None , [None]       ,False , None), Spot([4,3], [None]       ,True , None)]
+        ]
         for y in virtualLot:
             for x in y:
                 if x.getParent() != None:

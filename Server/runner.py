@@ -1,5 +1,6 @@
 import main as m
 
 # m.runTest();
-# m.initializeLot([True,True,False,False,False,True,True,False,False,True,False,True,False,False,False,True,True, True])
-m.runAlgorithm([True,True,False,False,False,True,True,False,False,True,False,True,False,False,False,True,True, True])
+# m.initializeLot([False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False, False])
+m.runAlgorithm([True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True])
+m.runAlgorithm([False,False,False,False,False,False,False,False,False,False,True,False,False,False,False,True,False, False])

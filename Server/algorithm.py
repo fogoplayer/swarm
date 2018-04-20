@@ -16,7 +16,10 @@ def main(vLot, occ):
     for y in virtualLot:
         printString = ""
         for x in y:
-            printString += x.toString()
+            if x.getOccupantID():
+                printString += x.toString() + " " + str(occupants[x.getOccupantID()]) + "\t"
+            else:
+                printString += x.toString() + " False\t"
         print printString
     print occupants                                                             #TODO set up occupants to print relevant properties rather than python gibberish
     print
@@ -29,7 +32,10 @@ def main(vLot, occ):
     for y in virtualLot:
         printString = ""
         for x in y:
-            printString += x.toString()
+            if x.getOccupantID():
+                printString += x.toString() + " " + str(occupants[x.getOccupantID()]) + "\t"
+            else:
+                printString += x.toString() + " False\t"
         print printString
     print occupants
     print
@@ -63,6 +69,7 @@ def findContestedDestinations():
             currentDestinations.append(occupant.getDestination())
         elif occupant.isGoing() and (occupant.getDestination() in currentDestinations and (occupant.getDestination() not in contestedDestinations)):
             contestedDestinations.append(occupant.getDestination())
+    print "1", str(contestedDestinations)                                                 #Debug print
     return contestedDestinations
 
 #Prioritizes cars jockeying for position
@@ -118,4 +125,4 @@ def coinFlipCriteria(contestants):
 
 # takes the virtualLot coordinates passed to it, gets the occupant Id, and uses that to find the occupant in the occupant array
 def returnOccupant(array):
-    return occupants[virtualLot[array[1]][array[0]].getOccupantID()]
+    return occupants[virtualLot[array[0]][array[1]].getOccupantID()]
