@@ -13,7 +13,7 @@ def main(vLot, occ):
     occupants = occ
     
     #Print inital virtual lot
-    for y in virtualLot:
+    '''for y in virtualLot:
         printString = ""
         for x in y:
             if x.getOccupantID():
@@ -22,7 +22,7 @@ def main(vLot, occ):
                 printString += x.toString() + " False\t"
         print printString
     print occupants                                                             #TODO set up occupants to print relevant properties rather than python gibberish
-    print
+    print'''
     
     # Move all cars to their default states, then run algorithm
     tellAllCarsToGo()
@@ -33,12 +33,11 @@ def main(vLot, occ):
         printString = ""
         for x in y:
             if x.getOccupantID():
-                printString += x.toString() + " " + str(occupants[x.getOccupantID()]) + "\t"
+                printString += x.toString() + "    " + str(occupants[x.getOccupantID()]) + "\t"
             else:
                 printString += x.toString() + " False\t"
         print printString
     print occupants
-    print
     print
     
     #return lot and occupants
@@ -69,7 +68,6 @@ def findContestedDestinations():
             currentDestinations.append(occupant.getDestination())
         elif occupant.isGoing() and (occupant.getDestination() in currentDestinations and (occupant.getDestination() not in contestedDestinations)):
             contestedDestinations.append(occupant.getDestination())
-    print "1", str(contestedDestinations)                                                 #Debug print
     return contestedDestinations
 
 #Prioritizes cars jockeying for position
