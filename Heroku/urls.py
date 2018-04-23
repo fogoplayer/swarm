@@ -17,12 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from . import views
+from Heroku import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('', views.save_events_json, name='save_events_json'),
-    path('', views.db, name='db'),
-
+    path('', views.json_input, name='json_input'),
+    path('', views.json_output, name='json_output'),
+    path('', views.greetings, name='greetings'),
 ]
