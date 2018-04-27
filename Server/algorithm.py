@@ -13,7 +13,7 @@ def main(vLot, occ):
     occupants = occ
     
     #Print inital virtual lot
-    '''for y in virtualLot:
+    for y in virtualLot:
         printString = ""
         for x in y:
             if x.getOccupantID():
@@ -21,8 +21,8 @@ def main(vLot, occ):
             else:
                 printString += x.toString() + " False\t"
         print printString
-    print occupants                                                             #TODO set up occupants to print relevant properties rather than python gibberish
-    print'''
+    print occupants
+    print
     
     # Move all cars to their default states, then run algorithm
     tellAllCarsToGo()
