@@ -19,11 +19,12 @@ def createLot(lat, lon):
     #Vertical lot starts from vLot[1], not 0
     #Lon get smaller from T to B
     vert += [lat]
-    vert += [vert[0] + (22                 / lonFactor)]
+    vert += [vert[len(vert)-1] - (22                 / latFactor)]
+    vert += [vert[len(vert)-1] - (22                 / latFactor)]
     vert += [vert[len(vert)-1] - (10 + 4.5 / 2 / 12) / latFactor]
     vert += [vert[len(vert)-1] - (10 + 4.5 / 2 / 12) / latFactor]
     vert += [vert[len(vert)-1] - (10 + 4.5 / 2 / 12) / latFactor]
-    vert += [vert[len(vert)-1] - (10 + 4.5 / 2 / 12) / latFactor]
+    #vert += [vert[len(vert)-1] - (10 + 4.5 / 2 / 12) / latFactor]
 
     print hor
     print vert
@@ -44,10 +45,11 @@ def getVlotCoordinates(lat,lon):
             v = i
             
     for i in range(0,len(hor)-1):
-        if lat < hor[i]:
-            v = i
-            
+        if lon < hor[i]:
+            h = i
+    
+    print v, h
     return [v, h]
 
 createLot(42.3461563,-83.491915);
-#TODO why is the distance so bad?
+getVlotCoordinates(42.346051,-83.492489)

@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
 import main
+import algorithm
 
 
 from .models import Greeting
@@ -39,3 +40,8 @@ def greetings(request):  # I think this code is from some example, but i'm leavi
     greetings = Greeting.objects.all()
 
     return render(request, {'greetings': greetings})
+
+#Actual routes------------------------------------------------------------------
+def signup(request):
+    #TODO access global server virtual lot and occupants array
+    
