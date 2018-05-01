@@ -31,7 +31,10 @@ document.addEventListener("DOMContentLoaded", function() {
         $.getJSON('https://cap-swarm.herokuapp.com', {
             carColor: cookie.color,
             carType: cookie.type,
-            carOrientation: cookie.orientation
+            carOrientation: cookie.orientation,
+            carLocation: navigator.geolocation.getCurrentPosition(function(position) {
+                return [position.coords.latitude, position.coords.longitude];
+            })
         }, function(data) {
             data.exists ? console.log(data) : null;
             updateSetting(null, "id", data.id);

@@ -3,8 +3,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
-import main
 import algorithm
+import lot
 
 
 from .models import Greeting
@@ -43,5 +43,35 @@ def greetings(request):  # I think this code is from some example, but i'm leavi
 
 #Actual routes------------------------------------------------------------------
 def signup(request):
-    #TODO access global server virtual lot and occupants array
-    
+    #TODO occupants = access global server occupants array
+    coord = lot.getVlotCoordinates(request.body.carLocation[0], request.body.carLocation[1])
+    dest = '''globalVirtualLot'''[userCoord[0]][userCoord[1]].getDestination()
+    occupants += [new Occupant(request.body.carColor, request.body.carType, dest)] #TODO find a way to access the occupant class, preferably from its own file
+    response = {
+        id: occupants.length - 1,
+        instructions:["Go fast", "Turn left"]
+    }
+    return HttpResponse(response);
+    userCoord = lot.getVlotCoordinates()
+
+def requestInstructions(request):
+    for y in '''globalVirtualLot''':
+        for x in '''globalVirtualLot''':
+            if (x.getOccupantID() == request.body.id):
+                x.setOccupantID(None)
+        coords = [lot.getVlotCoordinates(request.body.location[0],request.body.location[1])]
+        '''globalVirtualLot'''[coords[0]][coords[1]].setOccupantID(request.body.id)
+        '''globalOccupants''' = algorithm.main('''globalVirtualLot''','''globalOccupants''')
+        if ('''globalOccupants'''[request.body.id].isGoing()):
+            response = {
+                exists:true,
+                text:"Move along",
+                icon:"forward"
+            }
+        else:
+            response = {
+                exists:true,
+                text:"Stop"
+                icon:"stop"
+            }
+        return HttpResponse(response)
