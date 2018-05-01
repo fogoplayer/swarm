@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //if overview page, make get request
     if (document.title == "Overview") {
-        $.getJSON('https://cap-swarm.herokuapp.com', {
+        $.getJSON('https://cap-hello.herokuapp.com', {
             carColor: cookie.color,
             carType: cookie.type,
             carOrientation: cookie.orientation,
@@ -100,7 +100,7 @@ Update onscreen display of the user's current location
 function updateLocation(lat, long) {
     document.getElementById("locationOutput").innerHTML = JSON.stringify(lat) + ", " + JSON.stringify(long);
     //console.log(JSON.stringify(lat) + ", " + JSON.stringify(long));
-    $.getJSON('https://cap-swarm.herokuapp.com', {
+    $.getJSON('https://cap-hello.herokuapp.com', {
             id: cookie.id,
             lat: lat,
             long: long

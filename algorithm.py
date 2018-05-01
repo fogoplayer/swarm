@@ -5,7 +5,11 @@ virtualLot = []
 occupants = []
 
 #Main routine of the algorithm
-def main(vLot, occ):
+def main(vLot: object, occ: object) -> object:
+    """
+
+    :rtype: object
+    """
     #Initialize variables
     global virtualLot
     global occupants
@@ -17,9 +21,9 @@ def main(vLot, occ):
         printString = ""
         for x in y:
             printString += x.toString()
-        print printString
-    print occupants                                                             #TODO set up occupants to print relevant properties rather than python gibberish
-    print
+        print(printString)
+    print(occupants)                                                             #TODO set up occupants to print relevant properties rather than python gibberish
+    print()
     
     # Move all cars to their default states, then run algorithm
     tellAllCarsToGo()
@@ -30,10 +34,10 @@ def main(vLot, occ):
         printString = ""
         for x in y:
             printString += x.toString()
-        print printString
-    print occupants
-    print
-    print
+        print(printString)
+    print(occupants)
+    print()
+    print()
     
     #return lot and occupants
     return occupants
@@ -48,7 +52,7 @@ def algorithm():
     contestedDestinations = findContestedDestinations()
     if(len(contestedDestinations) == 0):
         #TODO Push new lot
-        print "All clear!"
+        print("All clear!")
     else:
         for dest in contestedDestinations:
             pickWinner(dest)

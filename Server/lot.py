@@ -26,16 +26,16 @@ def createLot(lat, lon):
     vert += [vert[len(vert)-1] - (10 + 4.5 / 2 / 12) / latFactor]
     #vert += [vert[len(vert)-1] - (10 + 4.5 / 2 / 12) / latFactor]
 
-    print hor
-    print vert
+    print (hor)
+    print (vert)
 
 def distBetween(lat1, lon1, lat2, lon2):
-    print "Latitude distance: " + str(latFactor*(lat1-lat2))
+    print ("Latitude distance: " + str(latFactor*(lat1-lat2)))
     latDist = latFactor*(lat1-lat2)
-    print "Longitude distance: " + str(lonFactor*(lon1-lon2))
+    print ("Longitude distance: " + str(lonFactor*(lon1-lon2)))
     lonDist = lonFactor*(lon1-lon2)
-    print math.sqrt(math.pow( latDist, 2) + math.pow( lonDist, 2))
-    print
+    print (math.sqrt(math.pow( latDist, 2) + math.pow( lonDist, 2)))
+    print()
     
 def getVlotCoordinates(lat,lon):
     v = -1
@@ -48,7 +48,7 @@ def getVlotCoordinates(lat,lon):
         if lon < hor[i]:
             h = i
     
-    print v, h
+    print (v, h)
     return [v, h]
 
 createLot(42.3461563,-83.491915);
