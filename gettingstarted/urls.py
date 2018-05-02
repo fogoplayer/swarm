@@ -1,19 +1,18 @@
-from django.conf.urls import include, url
+import hello.views
+from django.conf.urls import url
 from django.urls import path
 
 from django.contrib import admin
+
 admin.autodiscover()
 
-import hello.views
-
-# Examples:
-# url(r'^$', 'gettingstarted.views.home', name='home'),
-# url(r'^blog/', include('blog.urls')),
 
 urlpatterns = [
     url(r'^$', hello.views.index, name='index'),
-    path('', hello.views.json_input, name='json_input'),
-    path('', hello.views.json_output, name='json_output'),
-    url(r'^db', hello.views.db, name='db'),
+    path('input', hello.views.json_input, name='json_input'),
+    path('output', hello.views.json_output, name='json_output'),
+    path('signup', hello.views.signup, name='signup'),
+    path('instructions', hello.views.requestInstructions, name='instructions'),
+    path('test_instructions', hello.views.testInstructions, name='test_instructions'),
     path('admin/', admin.site.urls),
 ]
