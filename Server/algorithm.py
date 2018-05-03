@@ -12,7 +12,7 @@ def main(vLot, occ):
     virtualLot = vLot
     occupants = occ
     
-    #Print inital virtual lot
+    #print(inital virtual lot
     for y in virtualLot:
         printString = ""
         for x in y:
@@ -20,15 +20,15 @@ def main(vLot, occ):
                 printString += x.toString() + " " + str(occupants[x.getOccupantID()]) + "\t"
             else:
                 printString += x.toString() + " False\t"
-        print printString
-    print occupants
-    print
+        print(printString)
+    print(occupants)
+    print()
     
     # Move all cars to their default states, then run algorithm
     tellAllCarsToGo()
     algorithm()
     
-    #Print new virtual lot
+    #print(new virtual lot
     for y in virtualLot:
         printString = ""
         for x in y:
@@ -36,9 +36,9 @@ def main(vLot, occ):
                 printString += x.toString() + "    " + str(occupants[x.getOccupantID()]) + "\t"
             else:
                 printString += x.toString() + " False\t"
-        print printString
-    print occupants
-    print
+        print(printString)
+    print(occupants)
+    print()
     
     #return lot and occupants
     return occupants
@@ -51,13 +51,13 @@ def tellAllCarsToGo():
 #The core algorithm. Executes recursively until everything is good to go
 def algorithm():
     contestedDestinations = findContestedDestinations()
-    if(len(contestedDestinations) == 0):
+    if len(contestedDestinations) == 0:
         #TODO Push new lot
-        print "All clear!"
+        print("All clear!")
     else:
         for dest in contestedDestinations:
             pickWinner(dest)
-        #algorithm()
+            #algorithm()
 
 #Scans the occupant array for spots that multiple cars are attempting to access
 def findContestedDestinations():
