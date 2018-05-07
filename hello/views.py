@@ -6,9 +6,9 @@ from django.template import loader
 import algorithm
 from Server.occupant import Occupant
 from .models import Greeting
+import manager as lotManager
 
-
-# Create your views here.
+# Create your views here
 def index(request):
         return render(request, "base.html")
 
@@ -40,29 +40,38 @@ def greetings(request):  # I think this code is from some example, but i'm leavi
 
 # Actual routes------------------------------------------------------------------
 def signup(request):
-    # TODO occupants = access global server occupants array
-    coord = lot.getVlotCoordinates(request.body.carLocation[0], request.body.carLocation[1])
-    dest = '''globalVirtualLot'''[lot.userCoord[0]][lot.userCoord[1]].getDestination()
-    lot.occupants += [Occupant(request.body.carColor, request.body.carType, dest)] #TODO find a way to access the occupant class, preferably from its own file
+    occupants = lotManager.getOccupants()
+    vLot = lotManager.getLot()
+    userCoords = lot.getVlotCoordinates(request.body.carLocation[0], request.body.carLocation[1])
+    dest = vLot[userCoords[0]][lot.userCoords[1]].getDestination()
+    occupants += [Occupant(request.body.carColor, request.body.carType, dest)] #TODO find a way to access the occupant class, preferably from its own file
+    vLot[userCoord[0]][lot.userCoord[1]].setOccupantID(occupants.length - 1);
+    lotManager.setLot(vLot)
+    lotManager.setOccupants(occupants)
+    
     response = {
         id: lot.occupants.length - 1,
         lot.instructions:["Go fast", "Turn left"]
     }
-    userCoord = lot.getVlotCoordinates()
     return HttpResponse(response);
 
 
 def requestInstructions(request):
-    for y in '''globalVirtualLot''':
-        for x in '''globalVirtualLot''':
+    vLot = lotManager.getLot()
+    occupants = lotManager.getOccupants()
+    for y in vLot:
+        for x in y:
             if x.getOccupantID() == request.body.id:
                 x.setOccupantID(None)
-        coords = [lot.getVlotCoordinates(request.body.location[0],request.body.location[1])]
-        '''globalVirtualLot'''[coords[0]][coords[1]].setOccupantID(request.body.id)
+        userCoords = [lot.getVlotCoordinates(request.body.location[0],request.body.location[1])]
+        vLot[userCoords[0]][userCoords[1]].setOccupantID(request.body.id)
 
         # This was broken idk why
-        globalOccupants = algorithm.main('globalOccupants''globalVirtualLot''', '''globalOccupants''')
-        if globalOccupants[request.body.id].isGoing():
+        occupants = algorithm.main(vLot, occupants)
+        
+        lotManager.setOccupants(occupants)
+        lotManager.setLot(vLot)
+        if occupants[request.body.id].isGoing():
             response = {
                 x.exists: True,
                 x.text:"Move along",
