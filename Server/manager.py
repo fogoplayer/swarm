@@ -1,5 +1,35 @@
 from multiprocessing import Process, Manager
-from main import Spot
+
+#Spot Class
+class Spot:
+    parent = None
+    occupantID = None
+    children = []
+    isLane = False
+    
+    def __init__(self, parent, children, lane, occupantID):
+        self.parent = parent
+        self.occupantID = occupantID
+        self.children = children
+        self.isLane = lane
+        
+    def getParent(self):
+        return self.parent
+        
+    def getChildren(self):
+        return self.children
+        
+    def setOccupantID(self, occupant):
+        self.occupantID = occupant
+        
+    def getOccupantID(self):
+        return self.occupantID
+        
+    def toString(self):
+        return str(self.getOccupantID())
+    
+    def getIsLane(self):
+        return self.isLane
 
 #if __name__ == '__main__':
 manager = Manager()
