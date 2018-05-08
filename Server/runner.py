@@ -1,5 +1,4 @@
-import main as m
-import manager as man
+import Server.Manager as man
 
 #m.runTest();
 #m.initializeLot([False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False,False, False])

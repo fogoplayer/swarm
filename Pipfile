@@ -7,6 +7,8 @@ django = "*"
 gunicorn = "*"
 django-heroku = "*"
 requests = "*"
+manage = "*"
+pip = "*"
 
 [requires]
 python_version = "3.6"

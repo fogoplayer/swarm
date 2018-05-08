@@ -59,15 +59,15 @@ def signup(request):
     vLot = lotManager.getLot()
     userCoords = lot.getVlotCoordinates(request.body.carLocation[0], request.body.carLocation[1])
     dest = vLot[userCoords[0]][userCoords[1]].getDestination()
-    occupants += [Occupant(request.body.carColor, request.body.carType, dest)] #TODO find a way to access the occupant class, preferably from its own file
-    vLot[userCoords[0]][userCoords[1]].setOccupantID(len(occupants) - 1);
+    occupants += [(request.body.carColor, request.body.carType, dest)]
+    vLot[userCoords[0]][userCoords[1]].setOccupantID(len(occupants) - 1)
     lotManager.setLot(vLot)
     lotManager.setOccupants(occupants)
     
     response = {
         'id': len(occupants) - 1,
         "instructions": ["Go fast", "Turn left"],
-        "exists":True
+        "exists": True
     }
     return HttpResponse(response);
 
