@@ -10,7 +10,7 @@ import Server.manager as lotManager
 
 # Create your views here
 def index(request):
-        return render(request, "base.html")
+    return render(request, "base.html")
 
 
 # General Notes:
@@ -51,7 +51,8 @@ def signup(request):
     
     response = {
         'id': len(occupants) - 1,
-        "instructions": ["Go fast", "Turn left"]
+        "instructions": ["Go fast", "Turn left"],
+        "exists":True
     }
     return HttpResponse(response);
 
