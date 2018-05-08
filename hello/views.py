@@ -1,3 +1,18 @@
+'''
+This must be executed from fogoplayer.github.io/swarm so jQuery works properly
+
+$.getJSON('https://swarm-edd.herokuapp.com/signup', {
+            carColor: "Blue",
+            carType: "Sedan",
+            carOrientation: "backwards",
+            carLocation: navigator.geolocation.getCurrentPosition(function(position) {
+                return [42.3461949, 83.4919403];
+            })
+        }, function(data) {
+            console.log(data.instructions);                                     //Expected return: ["Go fast", "Turn left"]
+        });
+'''
+
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 import algorithm
