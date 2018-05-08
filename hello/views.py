@@ -4,7 +4,7 @@ import algorithm
 import Server.lot as lot
 from django.template import loader
 import algorithm
-from Server.occupant import Occupant
+#from Server.occupant import Occupant
 from .models import Greeting
 import Server.manager as lotManager
 
