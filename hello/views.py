@@ -15,11 +15,8 @@ $.getJSON('https://swarm-edd.herokuapp.com/signup', {
 
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-import algorithm
 import Server.lot as lot
-from django.template import loader
 import algorithm
-#from Server.occupant import Occupant
 from .models import Greeting
 import Server.manager as lotManager
 
@@ -100,7 +97,6 @@ def requestInstructions(request):
                 x.icon:"stop"
             }
         return HttpResponse(response)
-
 
 def testInstructions(request):
     response = {
