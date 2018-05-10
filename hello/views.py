@@ -1,7 +1,7 @@
 '''
 This must be executed from fogoplayer.github.io/swarm so jQuery works properly
 
-$.getJSON('https://swarm-edd.herokuapp.com/signup', {
+$.getJSON('https://mighty-reef-68377.herokuapp.com//signup', {
             carColor: "Blue",
             carType: "Sedan",
             carOrientation: "backwards",
