@@ -38,7 +38,7 @@ CORS_ORIGIN_WHITELIST = (
     'fogoplayer.github.io/swarm',
     'https://github.io',
     'https://fogoplayer.github.io/swarm',
-    'https;//fogoplayer.github.io'
+    'https://fogoplayer.github.io'
 )
 
 # Application definition
