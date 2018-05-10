@@ -71,11 +71,13 @@ def signup(request):
     '''
 
     test_response = {
-        'Hello!'
+        'id':  7,
+        "instructions": ["Go fast", "Turn left"],
+        "exists": True
     }
 
     # return HttpResponse(response)
-    return HttpResponse(test_response)
+    return JsonResponse(test_response)
 
 
 def requestInstructions(request):
