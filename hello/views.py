@@ -1,7 +1,7 @@
 '''
 This must be executed from fogoplayer.github.io/swarm so jQuery works properly
 
-$.getJSON('https://mighty-reef-68377.herokuapp.com//signup', {
+$.getJSON('https://mighty-reef-68377.herokuapp.com/signup', {
             carColor: "Blue",
             carType: "Sedan",
             carOrientation: "backwards",
@@ -67,7 +67,13 @@ def signup(request):
         "instructions": ["Go fast", "Turn left"],
         "exists": True
     }
-    return HttpResponse(response);
+
+    test_response = {
+        'Hello!'
+    }
+
+    # return HttpResponse(response)
+    return HttpResponse(test_response)
 
 
 def requestInstructions(request):
