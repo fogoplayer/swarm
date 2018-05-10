@@ -42,10 +42,10 @@ document.addEventListener("DOMContentLoaded", function() {
             //data.instructions = ["Back up and go left", "Go forward"];
             data.instructions.forEach(function(instruction) {
                 var li = document.createElement("li");
-                /*var h = document.createElement("h5");
+                var h = document.createElement("h5");
                 h.append(instruction);
                 li.append(h);
-                li.append(instruction)*/
+                li.append(instruction)
                 document.getElementById("overviewList").append(li);
             });
         });
