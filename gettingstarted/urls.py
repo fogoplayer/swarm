@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^$', hello.views.index, name='index'),
     path('input', hello.views.json_input, name='json_input'),
     path('output', hello.views.json_output, name='json_output'),
-    path('signup', hello.views.signup, name='signup'),
+    path('signup', hello.views.signup, name='signup_page'),
     path('instructions', hello.views.requestInstructions, name='instructions'),
     path('test_instructions', hello.views.testInstructions, name='test_instructions'),
     path('admin/', admin.site.urls),

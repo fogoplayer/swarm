@@ -20,6 +20,7 @@ import algorithm
 from .models import Greeting
 import Server.manager as lotManager
 
+
 # Create your views here
 def index(request):
     return render(request, "base.html")
@@ -52,6 +53,9 @@ def greetings(request):  # I think this code is from some example, but i'm leavi
 
 # Actual routes------------------------------------------------------------------
 def signup(request):
+    '''
+    :param request:
+    :return:
     occupants = lotManager.getOccupants()
     vLot = lotManager.getLot()
     userCoords = lot.getVlotCoordinates(request.body.carLocation[0], request.body.carLocation[1])
@@ -60,9 +64,10 @@ def signup(request):
     vLot[userCoords[0]][userCoords[1]].setOccupantID(len(occupants) - 1)
     lotManager.setLot(vLot)
     lotManager.setOccupants(occupants)
-    
+    '''
     response = {
-        'id': len(occupants) - 1,
+        # 'id': len(occupants) - 1,
+        'id': 4,  # ONLY FOR TESTING
         "instructions": ["Go fast", "Turn left"],
         "exists": True
     }
@@ -97,6 +102,7 @@ def requestInstructions(request):
                 x.icon:"stop"
             }
         return HttpResponse(response)
+
 
 def testInstructions(request):
     response = {
