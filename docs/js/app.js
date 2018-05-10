@@ -39,15 +39,15 @@ document.addEventListener("DOMContentLoaded", function() {
             data.exists ? console.log(data) : null;
             updateSetting(null, "id", data.id);
             //Fake data
-            /*data.instructions = ["Back up and go left", "Go forward"];
+            //data.instructions = ["Back up and go left", "Go forward"];
             data.instructions.forEach(function(instruction) {
                 var li = document.createElement("li");
                 /*var h = document.createElement("h5");
                 h.append(instruction);
                 li.append(h);
-                li.append(instruction)
+                li.append(instruction)*/
                 document.getElementById("overviewList").append(li);
-            });*/
+            });
         });
     }
 
