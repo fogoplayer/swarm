@@ -5,7 +5,9 @@ lonFactor = math.cos(42.3461949) * 363058.08
 hor = []
 vert = []
 
+
 def createLot(lat, lon):
+    print("Creating lot...")
     global hor
     global vert
     
@@ -28,6 +30,8 @@ def createLot(lat, lon):
 
     print (hor)
     print (vert)
+    print("lot created!")
+
 
 def distBetween(lat1, lon1, lat2, lon2):
     print ("Latitude distance: " + str(latFactor*(lat1-lat2)))
@@ -36,8 +40,10 @@ def distBetween(lat1, lon1, lat2, lon2):
     lonDist = lonFactor*(lon1-lon2)
     print (math.sqrt(math.pow( latDist, 2) + math.pow( lonDist, 2)))
     print()
-    
+
+
 def getVlotCoordinates(lat,lon):
+    print("getting VlotCoordinates...")
     v = -1
     h = -1
     for i in range(0,len(vert)-1):
@@ -48,8 +54,10 @@ def getVlotCoordinates(lat,lon):
         if lon < hor[i]:
             h = i
     
-    print (v, h)
+    print(v, h)
+    print("VlotCoordinates done")
     return [v, h]
 
-createLot(42.3461563,-83.491915);
-getVlotCoordinates(42.346051,-83.492489)
+
+createLot(42.3461563, -83.491915)
+getVlotCoordinates(42.346051, -83.492489)

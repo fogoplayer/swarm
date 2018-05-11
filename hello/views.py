@@ -53,15 +53,19 @@ def greetings(request):  # I think this code is from some example, but i'm leavi
 
 # Actual routes------------------------------------------------------------------
 def signup(request):
+    print(1)
     occupants = lotManager.getOccupants()
-    #vLot = lotManager.getLot()
-    #userCoords = lot.getVlotCoordinates(request.body.carLocation[0], request.body.carLocation[1])
-    #dest = vLot[userCoords[0]][userCoords[1]].getDestination()
-    #occupants += [(request.body.carColor, request.body.carType, dest)]
-    #vLot[userCoords[0]][userCoords[1]].setOccupantID(len(occupants) - 1)
-    #lotManager.setLot(vLot)
-    #lotManager.setOccupants(occupants)
-
+    print(2)
+    vLot = lotManager.getLot()
+    print(3)
+    print(request)
+    userCoords = lot.getVlotCoordinates(request.body.carLocation[0], request.body.carLocation[1])
+    print(4)
+    dest = vLot[userCoords[0]][userCoords[1]].getDestination()
+    occupants += [(request.body.carColor, request.body.carType, dest)]
+    vLot[userCoords[0]][userCoords[1]].setOccupantID(len(occupants) - 1)
+    lotManager.setLot(vLot)
+    lotManager.setOccupants(occupants)
     response = {
         'id': len(occupants) - 1,
         "instructions": ["Go fast", "Turn left"],
@@ -75,7 +79,7 @@ def signup(request):
     }
 
     # return HttpResponse(response)
-    return JsonResponse(test_response)
+    return JsonResponse(response)
 
 
 def requestInstructions(request):
