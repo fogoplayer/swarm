@@ -1,7 +1,7 @@
 '''
 This must be executed from fogoplayer.github.io/swarm so jQuery works properly
 
-$.getJSON('https://mighty-reef-68377.herokuapp.com/signup', {
+$.getJSON('https://swarm-edd.herokuapp.com/signup', {
             carColor: "Blue",
             carType: "Sedan",
             carOrientation: "backwards",
@@ -53,7 +53,6 @@ def greetings(request):  # I think this code is from some example, but i'm leavi
 
 # Actual routes------------------------------------------------------------------
 def signup(request):
-    '''
     occupants = lotManager.getOccupants()
     vLot = lotManager.getLot()
     userCoords = lot.getVlotCoordinates(request.body.carLocation[0], request.body.carLocation[1])
@@ -68,16 +67,7 @@ def signup(request):
         "instructions": ["Go fast", "Turn left"],
         "exists": True
     }
-    '''
-
-    test_response = {
-        'id':  7,
-        "instructions": ["Go fast", "Turn left"],
-        "exists": True
-    }
-
-    # return HttpResponse(response)
-    return JsonResponse(test_response)
+    return JsonResponse(response)
 
 
 def requestInstructions(request):
