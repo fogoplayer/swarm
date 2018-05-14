@@ -53,9 +53,9 @@ def greetings(request):  # I think this code is from some example, but i'm leavi
 
 # Actual routes------------------------------------------------------------------
 def signup(request):
-    '''print(1)
+    print(1)
     occupants = lotManager.getOccupants()
-    print(2)
+    '''print(2)
     vLot = lotManager.getLot()
     print(3)
     print(request)
