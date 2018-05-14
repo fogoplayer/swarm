@@ -55,9 +55,9 @@ def greetings(request):  # I think this code is from some example, but i'm leavi
 def signup(request):
     print(1)
     occupants = lotManager.getOccupants()
-    '''print(2)
+    print(2)
     vLot = lotManager.getLot()
-    print(3)
+    '''print(3)
     print(request)
     userCoords = lot.getVlotCoordinates(request.body.carLocation[0], request.body.carLocation[1])
     print(4)
