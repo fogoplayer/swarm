@@ -67,8 +67,8 @@ def signup(request):
     lotManager.setLot(vLot)
     lotManager.setOccupants(occupants)'''
     response = {
-        'id': 5,#len(occupants) - 1,
-        "instructions": ["Go fast", "Turn left"],
+        'id': len(occupants) - 1,
+        "instructions": ["Go fast1", "Turn left"],
         "exists": True
     }
 
