@@ -59,7 +59,7 @@ def signup(request):
     vLot = lotManager.getLot()
     print(3)
     print(request)
-    userCoords = lot.getVlotCoordinates(request.body.carLocation[0], request.body.carLocation[1])
+    #userCoords = lot.getVlotCoordinates(request.body.carLocation[0], request.body.carLocation[1])
     print(4)
     '''dest = vLot[userCoords[0]][userCoords[1]].getDestination()
     occupants += [(request.body.carColor, request.body.carType, dest)]
@@ -68,7 +68,7 @@ def signup(request):
     lotManager.setOccupants(occupants)'''
     response = {
         'id': len(occupants) - 1,
-        "instructions": ["Go fast3", "Turn left"],
+        "instructions": ["Go fast3", "Turn left", request.body.carLocation],
         "exists": True
     }
 
