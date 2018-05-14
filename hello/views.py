@@ -53,7 +53,7 @@ def greetings(request):  # I think this code is from some example, but i'm leavi
 
 # Actual routes------------------------------------------------------------------
 def signup(request):
-    print(1)
+    '''print(1)
     occupants = lotManager.getOccupants()
     print(2)
     vLot = lotManager.getLot()
@@ -65,9 +65,9 @@ def signup(request):
     occupants += [(request.body.carColor, request.body.carType, dest)]
     vLot[userCoords[0]][userCoords[1]].setOccupantID(len(occupants) - 1)
     lotManager.setLot(vLot)
-    lotManager.setOccupants(occupants)
+    lotManager.setOccupants(occupants)'''
     response = {
-        'id': len(occupants) - 1,
+        'id': 5,#len(occupants) - 1,
         "instructions": ["Go fast", "Turn left"],
         "exists": True
     }
