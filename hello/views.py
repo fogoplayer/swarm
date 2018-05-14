@@ -5,9 +5,7 @@ $.getJSON('https://swarm-edd.herokuapp.com/signup', {
             carColor: "Blue",
             carType: "Sedan",
             carOrientation: "backwards",
-            carLocation: navigator.geolocation.getCurrentPosition(function(position) {
-                return [42.3461949, 83.4919403];
-            })
+            carLocation:[42.3461949, 83.4919403]
         }, function(data) {
             console.log(data.instructions);                                     //Expected return: ["Go fast", "Turn left"]
         });
@@ -68,7 +66,7 @@ def signup(request):
     lotManager.setOccupants(occupants)'''
     response = {
         'id': len(occupants) - 1,
-        "instructions": ["Go fast4", "Turn left", str(request)],
+        "instructions": ["Go fast4", "Turn left", str(request.carLocation)],
         "exists": True
     }
 
