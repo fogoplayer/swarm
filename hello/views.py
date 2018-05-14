@@ -90,7 +90,7 @@ def requestInstructions(request):
             if x.getOccupantID() == request.body.id:
                 x.setOccupantID(None)
         userCoords = [lot.getVlotCoordinates(request.body.location[0],request.body.location[1])]
-        vLot[userCoords[0]][userCoords[1]].setOccupantID(request.body.id)
+        #vLot[userCoords[0]][userCoords[1]].setOccupantID(request.body.id)
 
         # This was broken idk why
         occupants = algorithm.main(vLot, occupants)
