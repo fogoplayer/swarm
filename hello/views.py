@@ -5,7 +5,8 @@ $.getJSON('https://swarm-edd.herokuapp.com/signup', {
             carColor: "Blue",
             carType: "Sedan",
             carOrientation: "backwards",
-            carLocation:[42.3461949, 83.4919403]
+            carLat:42.3461949,
+            carLon: 83.4919403,
         }, function(data) {
             console.log(data.instructions);                                     //Expected return: ["Go fast", "Turn left"]
         });

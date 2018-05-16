@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 return position.coords.longitude;
             })
         }, function(data) {
-            data.exists ? console.log(data) : null;
+            console.log(data);
             updateSetting(null, "id", data.id);
             //Fake data
             //data.instructions = ["Back up and go left", "Go forward"];
