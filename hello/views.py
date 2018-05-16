@@ -66,7 +66,7 @@ def signup(request):
     lotManager.setOccupants(occupants)'''
     response = {
         'id': len(occupants) - 1,
-        "instructions": ["Go fast2", "Turn left", str(request), str(request.GET.get("carColor"))],
+        "instructions": ["Go fast2", "Turn left", str(request), str(request.GET.get("carLocation"))],
         "exists": True
     }
 
