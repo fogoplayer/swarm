@@ -8,7 +8,7 @@ $.getJSON('https://swarm-edd.herokuapp.com/signup', {
             carLat:42.3461949,
             carLon: 83.4919403,
         }, function(data) {
-            console.log(data.instructions);                                     //Expected return: ["Go fast", "Turn left"]
+            console.log(data.instructions);
         });
 '''
 
