@@ -32,8 +32,11 @@ document.addEventListener("DOMContentLoaded", function() {
             carColor: cookie.color,
             carType: cookie.type,
             carOrientation: cookie.orientation,
-            carLocation: navigator.geolocation.getCurrentPosition(function(position) {
-                return [position.coords.latitude, position.coords.longitude];
+            carLat: navigator.geolocation.getCurrentPosition(function(position) {
+                return position.coords.latitude;
+            }),
+            carLon: navigator.geolocation.getCurrentPosition(function(position) {
+                return position.coords.longitude;
             })
         }, function(data) {
             data.exists ? console.log(data) : null;
