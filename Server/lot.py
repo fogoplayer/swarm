@@ -1,7 +1,5 @@
 import math
 
-lat = -1.0
-lon = -1.0
 latFactor = 364267.2
 lonFactor = math.cos(42.3461949) * 363058.08
 hor = []
