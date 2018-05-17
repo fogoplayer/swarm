@@ -58,6 +58,7 @@ def signup(request):
     print("lat: " + request.GET.get("carLat"))
     print("lon: " + request.GET.get("carLon"))
     userCoords = lot.getVlotCoordinates(float(request.GET.get("carLat")), float(request.GET.get("carLon")))
+    print("userCoords done")
     dest = vLot[userCoords[0]][userCoords[1]].getParent()
     print("dest done")
     occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
