@@ -109,3 +109,5 @@ def testInstructions(request):
         'icon': "forward"
     }
     return JsonResponse(response, safe=False)
+
+lotManager.createLot()
