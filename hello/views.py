@@ -52,18 +52,15 @@ def greetings(request):  # I think this code is from some example, but i'm leavi
 
 # Actual routes------------------------------------------------------------------
 def signup(request):
-    # print(1)
     occupants = lotManager.getOccupants()
-    # print(2)
     vLot = lotManager.getLot()
-    # print(3)
     print(request)
     # print(request.GET.get("carLat"))
     # print(request.GET.get("carLon"))
-    lot.getVlotCoordinates(10,10)
+    lot.getVlotCoordinates(10, 10)
     userCoords = [lot.getVlotCoordinates(float(request.GET.get("carLat")), float(request.GET.get("carLon")))]
-    print(4)
-    dest = vLot[userCoords[0], userCoords[1]].getDestination()
+    print(userCoords)
+    # dest = vLot[userCoords[0], userCoords[1]].getDestination()
     occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
     vLot[userCoords[0]][userCoords[1]].setOccupantID(len(occupants) - 1)
     lotManager.setLot(vLot)
