@@ -48,6 +48,7 @@ d['occupants'] = []
 
 
 def getLot():
+    print("getting lot!")
     return d['lot']
 
 
