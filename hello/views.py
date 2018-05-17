@@ -59,6 +59,7 @@ def signup(request):
     print(3)
     print(request)
     print(request.GET.get("carLat"))
+    print(request.GET.get("carLon"))
     lot.getVlotCoordinates(10,10)
     # userCoords = lot.getVlotCoordinates(float(request.GET.get("carLat")), float(request.GET.get("carLon")))
     response = request.GET.get("carLat")
