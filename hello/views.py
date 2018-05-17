@@ -61,7 +61,7 @@ def signup(request):
     userCoords = lot.getVlotCoordinates(request.GET.get("carLat"), request.GET.get("carLon"))
     print(4)
     dest = vLot[userCoords[0]][userCoords[1]].getDestination()
-    occupants += [(request.body.carColor, request.body.carType, dest)]
+    occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
     vLot[userCoords[0]][userCoords[1]].setOccupantID(len(occupants) - 1)
     lotManager.setLot(vLot)
     lotManager.setOccupants(occupants)
@@ -86,17 +86,17 @@ def requestInstructions(request):
     occupants = lotManager.getOccupants()
     for y in vLot:
         for x in y:
-            if x.getOccupantID() == request.body.id:
+            if x.getOccupantID() == request.GET.get("id"):
                 x.setOccupantID(None)
-        userCoords = [lot.getVlotCoordinates(request.body.location[0],request.body.location[1])]
-        #vLot[userCoords[0]][userCoords[1]].setOccupantID(request.body.id)
+        userCoords = [lot.getVlotCoordinates(request.GET.get("carLat"), request.GET.get("carLon"))]
+        #vLot[userCoords[0]][userCoords[1]].setOccupantID(request.GET.get("id"))
 
         # This was broken idk why
         occupants = algorithm.main(vLot, occupants)
         
         lotManager.setOccupants(occupants)
         lotManager.setLot(vLot)
-        if occupants[request.body.id].isGoing():
+        if occupants[request.GET.get("id")].isGoing():
             response = {
                 x.exists: True,
                 x.text:"Move along",
