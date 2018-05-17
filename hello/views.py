@@ -52,18 +52,16 @@ def greetings(request):  # I think this code is from some example, but i'm leavi
 
 # Actual routes------------------------------------------------------------------
 def signup(request):
-    print(1)
+    # print(1)
     occupants = lotManager.getOccupants()
-    print(2)
+    # print(2)
     vLot = lotManager.getLot()
-    print(3)
+    # print(3)
     print(request)
-    print(request.GET.get("carLat"))
-    print(request.GET.get("carLon"))
+    # print(request.GET.get("carLat"))
+    # print(request.GET.get("carLon"))
     lot.getVlotCoordinates(10,10)
-    # userCoords = lot.getVlotCoordinates(float(request.GET.get("carLat")), float(request.GET.get("carLon")))
-    response = request.GET.get("carLat")
-    '''
+    userCoords = lot.getVlotCoordinates(float(request.GET.get("carLat")), float(request.GET.get("carLon")))
     print(4)
     dest = vLot[userCoords[0]][userCoords[1]].getDestination()
     occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
@@ -76,12 +74,6 @@ def signup(request):
         "exists": True
     }
 
-    test_response = {
-        'id':  7,
-        "instructions": ["Go fast", "Turn left"],
-        "exists": True
-    }
-    '''
     return JsonResponse(response, safe=False)
 
 
