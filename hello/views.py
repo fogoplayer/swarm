@@ -60,8 +60,8 @@ def signup(request):
     print(request)
     userCoords = lot.getVlotCoordinates(request.GET.get("carLat"), request.GET.get("carLon"))
     print(4)
-    dest = vLot[userCoords[0]][userCoords[1]].getDestination()
-    '''occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
+    '''dest = vLot[userCoords[0]][userCoords[1]].getDestination()
+    occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
     vLot[userCoords[0]][userCoords[1]].setOccupantID(len(occupants) - 1)
     lotManager.setLot(vLot)
     lotManager.setOccupants(occupants)'''
@@ -77,7 +77,6 @@ def signup(request):
         "exists": True
     }
 
-    # return HttpResponse(response)
     return JsonResponse(response)
 
 
