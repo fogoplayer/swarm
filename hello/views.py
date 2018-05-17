@@ -58,9 +58,9 @@ def signup(request):
     print("lat: " + request.GET.get("carLat"))
     print("lon: " + request.GET.get("carLon"))
     userCoords = lot.getVlotCoordinates(float(request.GET.get("carLat")), float(request.GET.get("carLon")))
-    # dest = vLot[userCoords[0], userCoords[1]].getDestination()
-    # occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
-    # vLot[userCoords[0], userCoords[1]].setOccupantID(len(occupants) - 1)
+    dest = vLot[userCoords[0], userCoords[1]].getDestination()
+    occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
+    vLot[userCoords[0], userCoords[1]].setOccupantID(len(occupants) - 1)
     lotManager.setLot(vLot)
     lotManager.setOccupants(occupants)
     response = {
@@ -80,7 +80,7 @@ def requestInstructions(request):
             if x.getOccupantID() == request.GET.get("id"):
                 x.setOccupantID(None)
         userCoords = [lot.getVlotCoordinates(request.GET.get("carLat"), request.GET.get("carLon"))]
-        #vLot[userCoords[0]][userCoords[1]].setOccupantID(request.GET.get("id"))
+        # vLot[userCoords[0]][userCoords[1]].setOccupantID(request.GET.get("id"))
 
         # This was broken idk why
         occupants = algorithm.main(vLot, occupants)
