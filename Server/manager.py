@@ -56,6 +56,7 @@ def setLot(lot):
 
 
 def getOccupants():
+    print("getting occupants")
     return d['occupants']
 
 
