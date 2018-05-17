@@ -59,14 +59,16 @@ def signup(request):
     print(3)
     print(request)
     request.GET.get("carLat")
-    #lot.getVlotCoordinates(10,10)
-    '''userCoords = lot.getVlotCoordinates(request.GET.get("carLat"), request.GET.get("carLon"))
+    lot.getVlotCoordinates(10,10)
+    # userCoords = lot.getVlotCoordinates(float(request.GET.get("carLat")), float(request.GET.get("carLon")))
+    response = request.GET.get("carLat")
+    '''
     print(4)
     dest = vLot[userCoords[0]][userCoords[1]].getDestination()
     occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
     vLot[userCoords[0]][userCoords[1]].setOccupantID(len(occupants) - 1)
     lotManager.setLot(vLot)
-    lotManager.setOccupants(occupants)'''
+    lotManager.setOccupants(occupants)
     response = {
         'id': len(occupants) - 1,
         "instructions": ["Go fast2", "Turn left", str(request), str(type(request.GET.get("carLat")))],
@@ -78,8 +80,8 @@ def signup(request):
         "instructions": ["Go fast", "Turn left"],
         "exists": True
     }
-
-    return JsonResponse(response)
+    '''
+    return JsonResponse(response, safe=False)
 
 
 def requestInstructions(request):

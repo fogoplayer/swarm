@@ -1,5 +1,7 @@
 import math
 
+lat = -1.0
+lon = -1.0
 latFactor = 364267.2
 lonFactor = math.cos(42.3461949) * 363058.08
 hor = []
@@ -42,11 +44,13 @@ def distBetween(lat1, lon1, lat2, lon2):
     print()
 
 
-def getVlotCoordinates(lat,lon):
+def getVlotCoordinates(lat, lon):
+    lat = float(lat)
+    lon = float(lon)
     print("getting VlotCoordinates...")
     v = -1
     h = -1
-    for i in range(0,len(vert)-1):
+    for i in range(0, len(vert)-1):
         if lat < vert[i]:
             v = i
             
