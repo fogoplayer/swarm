@@ -58,7 +58,7 @@ def signup(request):
     vLot = lotManager.getLot()
     print(3)
     print(request)
-    lot.getVlotCoordinates(10,10)
+    lot.getVlotCoordinates(request.GET.get("carLat"),10)
     '''userCoords = lot.getVlotCoordinates(request.GET.get("carLat"), request.GET.get("carLon"))
     print(4)
     dest = vLot[userCoords[0]][userCoords[1]].getDestination()
