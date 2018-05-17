@@ -54,15 +54,17 @@ def greetings(request):  # I think this code is from some example, but i'm leavi
 def signup(request):
     occupants = lotManager.getOccupants()
     vLot = lotManager.getLot()
+    print("vLot 1: " + vLot)
     print(request)
     print("lat: " + request.GET.get("carLat"))
     print("lon: " + request.GET.get("carLon"))
-    lot.getVlotCoordinates(10, 10)
     userCoords = [lot.getVlotCoordinates(float(request.GET.get("carLat")), float(request.GET.get("carLon")))]
     print(userCoords)
     # dest = vLot[userCoords[0], userCoords[1]].getDestination()
     # occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
-    vLot[userCoords[0]][userCoords[1]].setOccupantID(len(occupants) - 1)
+    print("vLot 2: " + vLot)
+    vLot[userCoords[0], userCoords[1]].setOccupantID(len(occupants) - 1)
+    print("vLot 3: " + vLot)
     lotManager.setLot(vLot)
     lotManager.setOccupants(occupants)
     response = {
