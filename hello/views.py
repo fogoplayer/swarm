@@ -61,10 +61,10 @@ def signup(request):
     userCoords = lot.getVlotCoordinates(request.GET.get("carLat"), request.GET.get("carLon"))
     print(4)
     dest = vLot[userCoords[0]][userCoords[1]].getDestination()
-    occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
+    '''occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
     vLot[userCoords[0]][userCoords[1]].setOccupantID(len(occupants) - 1)
     lotManager.setLot(vLot)
-    lotManager.setOccupants(occupants)
+    lotManager.setOccupants(occupants)'''
     response = {
         'id': len(occupants) - 1,
         "instructions": ["Go fast2", "Turn left", str(request), str(request.GET.get("carLat"))],
