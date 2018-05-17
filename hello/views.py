@@ -19,7 +19,6 @@ import algorithm
 from .models import Greeting
 import Server.manager as lotManager
 
-
 # Create your views here
 def index(request):
     return render(request, "base.html")
@@ -55,13 +54,14 @@ def signup(request):
     occupants = lotManager.getOccupants()
     vLot = lotManager.getLot()
     print(request)
+    print(str(vLot))
     print("lat: " + request.GET.get("carLat"))
     print("lon: " + request.GET.get("carLon"))
     userCoords = lot.getVlotCoordinates(float(request.GET.get("carLat")), float(request.GET.get("carLon")))
     dest = vLot[userCoords[0]][userCoords[1]].getDestination()
     occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
     vLot[userCoords[0], userCoords[1]].setOccupantID(len(occupants) - 1)
-    lotManager.setLot(vLot)
+    lotManager.setLotinc(vLot)
     lotManager.setOccupants(occupants)
     response = {
         'id': len(occupants) - 1,
