@@ -32,10 +32,11 @@ class Spot:
         return self.isLane
 
 
+print("Before if __name__ == ""Server.manager....... __name__ = " + __name__)
 if __name__ == "Server.manager":
     d = {'lot': [], 'occupants': []}
     print("Name: " + __name__)
-    print("Name is 'Server.manager': " + str(__name__ == "Server.Manager"));
+    print("Name is 'Server.manager': " + str(__name__))
     manager = Manager()
     d = manager.dict()
     d['lot'] = [
