@@ -28,27 +28,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //if overview page, make get request
     if (document.title == "Overview") {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            $.getJSON('https://swarm-edd.herokuapp.com/signup', {
-                carColor: cookie.color,
-                carType: cookie.type,
-                carOrientation: cookie.orientation,
-                carLat: position.coords.latitude,
-                carLon: position.coords.longitude
-            }, function(data) {
-                console.log(data);
-                updateSetting(null, "id", data.id);
-                //Fake data
-                //data.instructions = ["Back up and go left", "Go forward"];
-                data.instructions.forEach(function(instruction) {
-                    var li = document.createElement("li");
-                    var h = document.createElement("h5");
-                    h.append(instruction);
-                    li.append(h);
-                    //li.append(instruction)
-                    document.getElementById("overviewList").append(li);
-                });
-            });
+        let data = {
+            instructions:["Go fast", "Turn left"],
+        }
+        data.instructions.forEach(function(instruction) {
+            var li = document.createElement("li");
+            var h = document.createElement("h5");
+            h.append(instruction);
+            li.append(h);
+            //li.append(instruction)
+            document.getElementById("overviewList").append(li);
         });
     }
 
