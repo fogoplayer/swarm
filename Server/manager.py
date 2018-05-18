@@ -32,10 +32,10 @@ class Spot:
         return self.isLane
 
 
-d = {'lot': [], 'occupants': []}
-print("Name: " + __name__)
-print("Name is 'Server.manager': " + str(__name__ == "Server.Manager"));
 if __name__ == "Server.manager":
+    d = {'lot': [], 'occupants': []}
+    print("Name: " + __name__)
+    print("Name is 'Server.manager': " + str(__name__ == "Server.Manager"));
     manager = Manager()
     d = manager.dict()
     d['lot'] = [
