@@ -60,9 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         //Set up location
         setInterval(function(){
-            navigator.geolocation.getCurrentPosition(function(position){
-                updateLocation(position.coords.latitude, position.coords.longitude);
-            });
+            updateLocation(42.3461949, 83.4919403);
         }, 1000);
     }
 });
@@ -88,22 +86,9 @@ Update onscreen display of the user's current location
 @param long - device longitude
 */
 function updateLocation(lat, long) {
-    document.getElementById("locationOutput").innerHTML = JSON.stringify(lat) + ", " + JSON.stringify(long);
-    //console.log(JSON.stringify(lat) + ", " + JSON.stringify(long));
-    $.getJSON('https://swarm-edd.herokuapp.com/instructions', {
-            id: cookie.id,
-            lat: lat,
-            long: long
-        },
-        function(data) {
-            //fake data
-            //data = fakeData();
-            //console.log(data);
-            if(data.exists){
-                console.log(data);
-                updateInstruction(data.text, data.icon);
-            }
-        });
+    let data = fakeData();
+    console.log(data);
+    updateInstruction(data.text, data.icon);
 }
 /*
 Generates fake data for app to use
