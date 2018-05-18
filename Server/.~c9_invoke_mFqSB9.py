@@ -33,7 +33,7 @@ class Spot:
 
 
 d = {'lot': [], 'occupants': []}
-print(name);
+p
 if __name__ == "Server.manager":
     manager = Manager()
     d = manager.dict()
