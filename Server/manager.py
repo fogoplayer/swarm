@@ -52,6 +52,7 @@ if __name__ == "Server.manager":
 
 def getLot():
     if(d['lot'] != None):
+        print("d['lot'] = " + d['lot'])
         return d['lot']
     else:
         print("d['lot'] has nothing in it")
@@ -64,6 +65,7 @@ def setLot(lot):
 
 def getOccupants():
     if(d['occupants'] != None):
+        print("d['occupants'] = " + d['occupants'])
         return d['occupants']
     else:
         print("d['occupants'] has nothing in it")
