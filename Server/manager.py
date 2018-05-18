@@ -54,6 +54,7 @@ if __name__ == "Server.manager":
         [Spot([4, 0], [None], True, None), Spot(None, [None], False, None), Spot(None, [None], False, None),
          Spot([4, 3], [None], True, None)]
     ]
+    print("vlot initalized........vlot = " + str(d['lot']))
     d['occupants'] = []
 
 
