@@ -34,7 +34,7 @@ class Spot:
 
 
 print("Before if __name__ == ""Server.manager....... __name__ = " + __name__)
-if True:
+if __name__ == "Server.manager":
     d = {'lot': [], 'occupants': []}
     print("Name: " + __name__)
     print("Name is 'Server.manager': " + str(__name__))
