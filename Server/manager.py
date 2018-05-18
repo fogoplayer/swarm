@@ -71,7 +71,7 @@ def setLot(lot):
 
 
 def getOccupants():
-    if d['occupants'] is not None:
+    if d['occupants'].__sizeof__() != 0:
         print("d['occupants'] = " + str(d['occupants']))
         return d['occupants']
     else:

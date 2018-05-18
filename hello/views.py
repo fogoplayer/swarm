@@ -55,7 +55,7 @@ def signup(request):
     occupants = lotManager.getOccupants()
     vLot = lotManager.getLot()
     print(request)
-    print(str(vLot))
+    print("vlot: " + str(vLot))
     print("lat: " + request.GET.get("carLat"))
     print("lon: " + request.GET.get("carLon"))
     userCoords = lot.getVlotCoordinates(float(request.GET.get("carLat")), float(request.GET.get("carLon")))
