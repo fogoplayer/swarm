@@ -57,11 +57,14 @@ document.addEventListener("DOMContentLoaded", function() {
     if (document.getElementById("voiceToggle") && !cookie.spokenFeedBackOn){
         cookie.spokenFeedBackOn = true;
         toggleSpokenFeedback();
-        
+    }
+    
+    if(document.title == "SWARM"){
         //Set up location
         setInterval(function(){
+            console.log("Hello")
             updateLocation(42.3461949, 83.4919403);
-        }, 1000);
+        }, 5000);
     }
 });
 /*---------------------------------------Functions---------------------------------------*/
