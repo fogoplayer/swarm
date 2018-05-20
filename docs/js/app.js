@@ -100,12 +100,16 @@ Generates fake data for app to use
 function fakeData(){
     let ran = Math.random();
     let data;
-    if (ran < .50){
-        data = { exists: false, text: "Turn left", icon: "left"};
-    }else if (ran < .75){
-        data = { exists: true, text: "Turn right", icon: "right" };
+    if (ran < .2){
+        data = { exists: false, text: "Wait please", icon: "left"};
+    }else if (ran < .4){
+        data = { exists: true, text: "Turn right after the green sedan", icon: "right" };
+    }else if (ran < .6){
+        data = { exists: true, text: "Turn left after the blue convertible", icon: "right" };
+    }else if (ran < .8){
+        data = { exists: true, text: "Turn right at the end of the lane", icon: "right" };
     }else{
-        data = { exists: true, text: "Turn left", icon: "left" };
+        data = { exists: true, text: "Turn left after the red SUV", icon: "left" };
     }
     return data;
 }
