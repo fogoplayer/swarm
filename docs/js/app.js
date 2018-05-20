@@ -101,7 +101,7 @@ function fakeData(){
     let ran = Math.random();
     let data;
     if (ran < .2){
-        data = { exists: false, text: "Wait please", icon: "left"};
+        data = { exists: false, text: "Wait please", icon: "stop"};
     }else if (ran < .4){
         data = { exists: true, text: "Turn right after the green sedan", icon: "right" };
     }else if (ran < .6){
