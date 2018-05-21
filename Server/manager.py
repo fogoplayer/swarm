@@ -83,12 +83,6 @@ d['lot'] = [
             ]
 d['occupants'] = []
 
-
-def getLot():
-    print("getting lot!")
-    return d['lot']
-
-
 def setLot(lot):
     Manager.__dict__['lot'] = lot
 
