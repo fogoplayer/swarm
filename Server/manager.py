@@ -3,6 +3,7 @@ from multiprocessing import Manager
 
 # Spot Class
 class Spot:
+    print("spot")
     parent = None
     occupantID = None
     children = []
@@ -35,12 +36,13 @@ class Spot:
 
 print("Before if __name__ == ""Server.manager....... __name__ = " + __name__)
 if __name__ == "Server.manager":
+    manager = Manager()
     d = {'lot': [], 'occupants': []}
+    d = manager.dict()
     print("Name: " + __name__)
     print("Name is 'Server.manager': " + str(__name__))
-    manager = Manager()
-    d = manager.dict()
-    d['lot'] = [
+
+    Manager.__dict__['lot'] = [
         [Spot(None, [None], False, None), Spot(None, [None], True, None), Spot(None, [[1, 2]], True, None),
          Spot(None, [None], False, None)],
         [Spot([1, 1], [[2, 0]], True, None), Spot([1, 2], [[1, 0]], False, None),
@@ -54,31 +56,31 @@ if __name__ == "Server.manager":
         [Spot([4, 0], [None], True, None), Spot(None, [None], False, None), Spot(None, [None], False, None),
          Spot([4, 3], [None], True, None)]
     ]
-    print("vlot initalized........vlot = " + str(d['lot']))
-    d['occupants'] = []
+    print("vlot initalized........vlot = " + str(Manager.__dict__['lot']))
+    Manager.__dict__['occupants'] = []
 
 
 def getLot():
-    if d['lot'] is not None:
-        print("d['lot'] = " + str(d['lot']))
-        return d['lot']
+    if Manager.__dict__['lot'] is not None:
+        print("d['lot'] = " + str(Manager.__dict__['lot']))
+        return Manager.__dict__['lot']
     else:
         print("d['lot'] has nothing in it")
         return
 
 
 def setLot(lot):
-    d['lot'] = lot
+    Manager.__dict__['lot'] = lot
 
 
 def getOccupants():
-    if d['occupants'].__sizeof__() != 0:
-        print("d['occupants'] = " + str(d['occupants']))
-        return d['occupants']
+    if Manager.__dict__['occupants'].__sizeof__() != 0:
+        print("d['occupants'] = " + str(Manager.__dict__['occupants']))
+        return Manager.__dict__['occupants']
     else:
         print("d['occupants'] has nothing in it")
         return
 
 
 def setOccupants(occupants):
-    d['occupants'] = occupants
+    Manager.__dict__['occupants'] = occupants
