@@ -36,6 +36,7 @@ class Spot:
 
 print("Before if __name__ == ""Server.manager....... __name__ = " + __name__)
 if __name__ == "Server.manager":
+    print("Manager thing running")
     manager = Manager()
     d = {'lot': [], 'occupants': []}
     d = manager.dict()
