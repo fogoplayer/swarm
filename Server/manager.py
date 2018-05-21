@@ -83,7 +83,7 @@ def getOccupants():
         print("d['occupants'] has nothing in it")
         return
     print("getting occupants")
-    return d['occupants']
+    return Manager.__dict__['occupants']
 
 
 def setOccupants(occupants):
