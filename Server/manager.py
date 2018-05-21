@@ -61,9 +61,10 @@ if __name__ == "Server.manager":
 
 
 def getLot():
-    if Manager.__dict__['lot'] is not None:
-        print("d['lot'] = " + str(Manager.__dict__['lot']))
-        return Manager.__dict__['lot']
+    print("** GET LOT CALLED **")
+    if d['lot'] is not None:
+        print("d['lot'] = " + str(Manager.d['lot']))
+        return Manager.d['lot']
     else:
         print("d['lot'] has nothing in it")
         return
