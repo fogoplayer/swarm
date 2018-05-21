@@ -66,7 +66,7 @@ def signup(request):
     print("dest done")
     occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
     print("occupants done")
-    vLot[userCoords[0], userCoords[1]].setOccupantID(len(occupants) - 1)
+    # lotManager.getOccupants()[userCoords[0], userCoords[1]].setOccupantID(len(occupants) - 1)
     print("vlot updated")
     lotManager.setLot(vLot)
     print("lot is set")
