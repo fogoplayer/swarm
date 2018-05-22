@@ -19,6 +19,7 @@ import algorithm
 from .models import Greeting
 import Server.manager as lotManager
 
+
 # Create your views here
 def index(request):
     return render(request, "base.html")
@@ -66,7 +67,7 @@ def signup(request):
     print("dest done")
     occupants += [(request.GET.get("carColor"), request.GET.get("carType"), dest)]
     print("occupants done")
-    lotManager.getOccupants()[userCoords[0], userCoords[1]].setOccupantID(len(occupants) - 1)
+    lotManager.getOccupants(userCoords).setOccupantID(len(occupants) - 1)
     print("vlot updated")
     lotManager.setLot(vLot)
     print("lot is set")
