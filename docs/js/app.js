@@ -28,27 +28,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //if overview page, make get request
     if (document.title == "Overview") {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            $.getJSON('https://swarm-edd.herokuapp.com/signup', {
-                carColor: cookie.color,
-                carType: cookie.type,
-                carOrientation: cookie.orientation,
-                carLat: position.coords.latitude,
-                carLon: position.coords.longitude
-            }, function(data) {
-                console.log(data);
-                updateSetting(null, "id", data.id);
-                //Fake data
-                //data.instructions = ["Back up and go left", "Go forward"];
-                data.instructions.forEach(function(instruction) {
-                    var li = document.createElement("li");
-                    var h = document.createElement("h5");
-                    h.append(instruction);
-                    li.append(h);
-                    //li.append(instruction)
-                    document.getElementById("overviewList").append(li);
-                });
-            });
+        let data = {
+            instructions:["Go fast", "Turn left"],
+        }
+        data.instructions.forEach(function(instruction) {
+            var li = document.createElement("li");
+            var h = document.createElement("h5");
+            h.append(instruction);
+            li.append(h);
+            //li.append(instruction)
+            document.getElementById("overviewList").append(li);
         });
     }
 
@@ -68,13 +57,14 @@ document.addEventListener("DOMContentLoaded", function() {
     if (document.getElementById("voiceToggle") && !cookie.spokenFeedBackOn){
         cookie.spokenFeedBackOn = true;
         toggleSpokenFeedback();
-        
+    }
+    
+    if(document.title == "SWARM"){
         //Set up location
         setInterval(function(){
-            navigator.geolocation.getCurrentPosition(function(position){
-                updateLocation(position.coords.latitude, position.coords.longitude);
-            });
-        }, 1000);
+            console.log("Hello")
+            updateLocation(42.3461949, 83.4919403);
+        }, 5000);
     }
 });
 /*---------------------------------------Functions---------------------------------------*/
@@ -99,22 +89,9 @@ Update onscreen display of the user's current location
 @param long - device longitude
 */
 function updateLocation(lat, long) {
-    document.getElementById("locationOutput").innerHTML = JSON.stringify(lat) + ", " + JSON.stringify(long);
-    //console.log(JSON.stringify(lat) + ", " + JSON.stringify(long));
-    $.getJSON('https://swarm-edd.herokuapp.com/instructions', {
-            id: cookie.id,
-            lat: lat,
-            long: long
-        },
-        function(data) {
-            //fake data
-            //data = fakeData();
-            //console.log(data);
-            if(data.exists){
-                console.log(data);
-                updateInstruction(data.text, data.icon);
-            }
-        });
+    let data = fakeData();
+    console.log(data);
+    updateInstruction(data.text, data.icon);
 }
 /*
 Generates fake data for app to use
@@ -123,12 +100,16 @@ Generates fake data for app to use
 function fakeData(){
     let ran = Math.random();
     let data;
-    if (ran < .50){
-        data = { exists: false, text: "Turn left", icon: "left"};
-    }else if (ran < .75){
-        data = { exists: true, text: "Turn right", icon: "right" };
+    if (ran < .2){
+        data = { exists: false, text: "Wait please", icon: "stop"};
+    }else if (ran < .4){
+        data = { exists: true, text: "Turn right after the green sedan", icon: "right" };
+    }else if (ran < .6){
+        data = { exists: true, text: "Turn left after the blue convertible", icon: "right" };
+    }else if (ran < .8){
+        data = { exists: true, text: "Turn right at the end of the lane", icon: "right" };
     }else{
-        data = { exists: true, text: "Turn left", icon: "left" };
+        data = { exists: true, text: "Turn left after the red SUV", icon: "left" };
     }
     return data;
 }
