@@ -105,7 +105,7 @@ function fakeData(){
     }else if (ran < .4){
         data = { exists: true, text: "Turn right after the green sedan", icon: "right" };
     }else if (ran < .6){
-        data = { exists: true, text: "Turn left after the blue convertible", icon: "right" };
+        data = { exists: true, text: "Turn left after the blue convertible", icon: "left" };
     }else if (ran < .8){
         data = { exists: true, text: "Turn right at the end of the lane", icon: "right" };
     }else{
